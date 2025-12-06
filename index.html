@@ -35,10 +35,23 @@
         }
         body {
             min-height: 100vh;
-            background-color: #ffffff;
+            background: linear-gradient(135deg, #ffffff 0%, #ffffff 30%, #a5d296 70%, #5ac05c 100%);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
             color: #252525;
             overflow-x: hidden;
             transition: background-color 0.3s;
+        }
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
         .page {
             opacity: 0;
@@ -142,11 +155,13 @@
             color: #252525;
             margin-bottom: 8px;
             line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
         }
         .home-subtitle {
             font-size: 1.5rem;
-            color: #a5d296;
+            color: #5ac05c;
             font-weight: 500;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
         }
         .announcements-container {
             display: flex;
@@ -209,6 +224,7 @@
             text-align: center;
             color: #252525;
             margin-bottom: 48px;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
         }
         .works-page, .contact-page, .collaboration-page, .service-page {
             padding-top: 72px;
@@ -528,10 +544,77 @@
         .copy-notification.show {
             opacity: 1;
         }
+        
+        /* 动态渐变背景的额外样式 */
+        .dynamic-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.8;
+        }
+        
+        .gradient-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.5;
+        }
+        
+        .blob-1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #a5d296 0%, #5ac05c 100%);
+            top: 10%;
+            left: 10%;
+            animation: float 25s ease-in-out infinite;
+        }
+        
+        .blob-2 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #5ac05c 0%, #ffffff 100%);
+            top: 60%;
+            right: 15%;
+            animation: float 30s ease-in-out infinite reverse;
+        }
+        
+        .blob-3 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #ffffff 0%, #a5d296 100%);
+            bottom: 20%;
+            left: 20%;
+            animation: float 35s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(30px, 50px) scale(1.1);
+            }
+            50% {
+                transform: translate(-20px, 30px) scale(0.9);
+            }
+            75% {
+                transform: translate(40px, -20px) scale(1.05);
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- 动态渐变背景 -->
+    <div class="dynamic-background">
+        <div class="gradient-blob blob-1"></div>
+        <div class="gradient-blob blob-2"></div>
+        <div class="gradient-blob blob-3"></div>
+    </div>
+    
     <nav class="sticky-nav">
         <div class="nav-container">
             <div class="nav-content">
@@ -664,11 +747,11 @@
                             </li>
                             <li class="card-list-item">
                                 <span class="card-list-bullet"></span>
-                                下载指定文件
+                                文件下载
                             </li>
                             <li class="card-list-item">
                                 <span class="card-list-bullet"></span>
-                                跳转至站外网页
+                                网页跳转
                             </li>
                             <li class="card-list-item">
                                 <span class="card-list-bullet"></span>
@@ -758,10 +841,10 @@
                             <div class="card-icon">
                                 <div class="card-dot"></div>
                             </div>
-                            <h3 class="card-title">慕然科技Scratch积木扩展库</h3>
+                            <h3 class="card-title">慕然科技官方文库</h3>
                         </div>
-                        <p class="card-note">丰富、实用的开源积木扩展</p>
-                        <a href="https://ccwmoran.github.io/code/" target="_blank" class="service-btn encode-btn external-link" style="display: block; text-align: center; margin-top: 16px;">访问代码库</a>
+                        <p class="card-note">官方文档和资源库</p>
+                        <a href="https://kejicx.github.io/doc/" target="_blank" class="service-btn encode-btn external-link" style="display: block; text-align: center; margin-top: 16px;">访问文库</a>
                     </div>
                 </div>
             </div>
@@ -985,6 +1068,47 @@
             randomEmoji.style.fontSize = '1.5rem';
             randomEmoji.style.marginLeft = '8px';
             randomEmoji.style.display = 'inline-block';
+            
+            // 动态生成随机渐变背景
+            function generateRandomGradient() {
+                const colors = ['#ffffff', '#a5d296', '#5ac05c'];
+                const gradientTypes = ['linear-gradient', 'radial-gradient'];
+                const gradientType = gradientTypes[Math.floor(Math.random() * gradientTypes.length)];
+                
+                let gradientString;
+                if (gradientType === 'linear-gradient') {
+                    const angle = Math.floor(Math.random() * 360);
+                    const color1 = colors[Math.floor(Math.random() * colors.length)];
+                    const color2 = colors[Math.floor(Math.random() * colors.length)];
+                    const color3 = colors[Math.floor(Math.random() * colors.length)];
+                    gradientString = `${gradientType}(${angle}deg, ${color1} 0%, ${color2} 50%, ${color3} 100%)`;
+                } else {
+                    const shape = Math.random() > 0.5 ? 'circle' : 'ellipse';
+                    const color1 = colors[Math.floor(Math.random() * colors.length)];
+                    const color2 = colors[Math.floor(Math.random() * colors.length)];
+                    gradientString = `${gradientType}(${shape} at ${Math.floor(Math.random() * 100)}% ${Math.floor(Math.random() * 100)}%, ${color1} 0%, ${color2} 100%)`;
+                }
+                
+                return gradientString;
+            }
+            
+            // 应用随机渐变背景
+            const dynamicBackground = document.querySelector('.dynamic-background');
+            if (dynamicBackground) {
+                // 随机调整渐变斑点的位置和大小
+                const blobs = document.querySelectorAll('.gradient-blob');
+                blobs.forEach(blob => {
+                    const size = Math.floor(Math.random() * 200) + 150;
+                    blob.style.width = `${size}px`;
+                    blob.style.height = `${size}px`;
+                    blob.style.top = `${Math.floor(Math.random() * 80)}%`;
+                    blob.style.left = `${Math.floor(Math.random() * 80)}%`;
+                    
+                    // 随机动画持续时间
+                    const duration = Math.floor(Math.random() * 20) + 20;
+                    blob.style.animationDuration = `${duration}s`;
+                });
+            }
             
             // 初始页面显示
             setTimeout(() => {
