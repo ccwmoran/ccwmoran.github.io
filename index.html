@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=1">
-    <title>慕然科技｜CCWMORAN</title>
+    <title>CCWMORAN｜慕然科技</title>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="CCW共创世界编程社区慕然科技工作室（原科技创新），致力于开发Scratch作品和Scratch积木扩展的小型计算机、编程工作室。">
@@ -41,6 +41,7 @@
             color: #252525;
             overflow-x: hidden;
             transition: background-color 0.3s;
+            line-height: 1.6;
         }
         @keyframes gradientMove {
             0% {
@@ -73,12 +74,11 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             background-color: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         }
         .sticky-nav.scrolled {
             background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
         }
         .nav-container {
             padding: 0 16px;
@@ -127,7 +127,6 @@
             background-color: #a5d296;
             color: #252525;
             font-weight: 600;
-            border: 1px solid #5ca05c;
         }
         .nav-item:hover:not(.active) {
             background-color: rgba(255, 255, 255, 0.3);
@@ -148,25 +147,37 @@
             text-align: center;
             margin-top: 32px;
             margin-bottom: 24px;
+            padding: 0 16px;
         }
         .home-title {
             font-size: 2.5rem;
             font-weight: 700;
             color: #252525;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             line-height: 1.2;
             text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+        }
+        @media (max-width: 768px) {
+            .home-title {
+                font-size: 2rem;
+            }
         }
         .home-subtitle {
             font-size: 1.5rem;
             color: #5ac05c;
             font-weight: 500;
             text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+            margin-bottom: 24px;
+        }
+        @media (max-width: 768px) {
+            .home-subtitle {
+                font-size: 1.25rem;
+            }
         }
         .announcements-container {
             display: flex;
             justify-content: center;
-            gap: 24px;
+            gap: 32px;
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 16px;
@@ -175,24 +186,24 @@
         @media (max-width: 768px) {
             .announcements-container {
                 flex-direction: column;
+                gap: 24px;
             }
         }
         .announcement-card, .activity-card {
             flex: 1;
             min-width: 300px;
-            background-color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         }
         .announcement-title, .activity-title {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: 600;
             color: #252525;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
         }
@@ -203,14 +214,15 @@
             height: 8px;
             background-color: #a5d296;
             border-radius: 50%;
-            margin-right: 8px;
+            margin-right: 12px;
         }
         .announcement-content, .activity-content {
-            color: #666;
-            line-height: 1.6;
+            color: #444;
+            line-height: 1.8;
             white-space: pre-wrap;
             word-break: break-word;
-            text-align: center;
+            text-align: left;
+            font-size: 1.05rem;
         }
         .announcement-content p, .activity-content p {
             margin-bottom: 16px;
@@ -219,16 +231,23 @@
             margin-bottom: 0;
         }
         .section-title {
-            font-size: 1.875rem;
+            font-size: 2.25rem;
             font-weight: 700;
             text-align: center;
             color: #252525;
             margin-bottom: 48px;
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+            padding: 0 16px;
+            line-height: 1.2;
         }
-        .works-page, .contact-page, .collaboration-page, .service-page {
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.875rem;
+                margin-bottom: 40px;
+            }
+        }
+        .works-page, .contact-page, .collaboration-page, .service-page, .about-page {
             padding-top: 72px;
-            padding-bottom: 48px;
+            padding-bottom: 72px;
         }
         .cards-container {
             max-width: 1280px;
@@ -238,30 +257,29 @@
         .cards-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 32px;
+            gap: 40px;
         }
         .service-page .cards-grid {
             grid-template-columns: 1fr;
         }
         .card {
-            background-color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         }
         .card-header {
             display: flex;
             align-items: center;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
         }
         .card-icon {
             background-color: rgba(165, 210, 150, 0.1);
-            padding: 8px;
+            padding: 10px;
             border-radius: 12px;
-            margin-right: 12px;
+            margin-right: 16px;
         }
         .card-dot {
             width: 8px;
@@ -270,39 +288,40 @@
             border-radius: 50%;
         }
         .card-title {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: 600;
             color: #252525;
         }
         .card-list {
             list-style: none;
+            margin-left: 8px;
         }
         .card-list-item {
             display: flex;
             align-items: center;
-            padding-left: 8px;
+            padding-left: 12px;
             border-left: 2px solid rgba(165, 210, 150, 0.3);
-            transition: all 0.2s;
-            padding-top: 4px;
-            padding-bottom: 4px;
-        }
-        .card-list-item:hover {
-            background-color: rgba(165, 210, 150, 0.05);
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 1.05rem;
+            color: #444;
         }
         .card-list-bullet {
             width: 8px;
             height: 8px;
             background-color: #a5d296;
             border-radius: 50%;
-            margin-right: 8px;
+            margin-right: 12px;
+            flex-shrink: 0;
         }
         .card-note {
-            font-size: 0.875rem;
+            font-size: 0.95rem;
             color: #666;
             font-style: italic;
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid rgba(225, 225, 225, 0.5);
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(225, 225, 225, 0.3);
+            line-height: 1.6;
         }
         .contact-cards {
             max-width: 768px;
@@ -310,23 +329,30 @@
         }
         .single-card {
             max-width: 768px;
-            margin: 0 auto 24px;
+            margin: 0 auto 32px;
         }
         .contact-title {
-            font-size: 1.125rem;
+            font-size: 1.375rem;
             font-weight: 600;
             color: #252525;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
         .contact-detail {
-            color: #666;
+            color: #444;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        .contact-detail p {
+            margin-bottom: 8px;
+        }
+        .contact-detail p:last-child {
+            margin-bottom: 0;
         }
         footer {
-            background-color: rgba(245, 245, 245, 0.6);
+            background-color: rgba(245, 245, 245, 0.4);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(255, 255, 255, 0.7);
-            padding: 24px 0;
+            padding: 32px 0;
             margin-top: 32px;
         }
         .footer-content {
@@ -335,19 +361,20 @@
             padding: 0 16px;
             text-align: center;
             color: #666;
-            font-size: 0.875rem;
+            font-size: 0.95rem;
         }
         .footer-links {
             display: flex;
             justify-content: center;
             gap: 24px;
-            margin-top: 16px;
+            margin-top: 20px;
             flex-wrap: wrap;
         }
         .footer-link {
             color: #666;
             text-decoration: none;
             transition: color 0.2s;
+            font-size: 0.95rem;
         }
         .footer-link:hover {
             color: #252525;
@@ -357,10 +384,15 @@
             cursor: pointer;
             text-decoration: underline;
             display: inline-block;
-            margin-top: 8px;
+            margin-top: 16px;
+            font-size: 0.95rem;
         }
         .version-log:hover {
             color: #8bc34a;
+        }
+        .counter {
+            margin-top: 16px;
+            font-size: 0.95rem;
         }
         .modal-overlay {
             position: fixed;
@@ -382,15 +414,14 @@
             visibility: visible;
         }
         .modal {
-            background-color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 16px;
+            border-radius: 20px;
             width: 90%;
             max-width: 400px;
-            padding: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            padding: 32px;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
             transform: translateY(20px);
             opacity: 0;
             transition: all 0.3s ease;
@@ -400,20 +431,27 @@
             opacity: 1;
         }
         .modal-title {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: 600;
             color: #252525;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             text-align: center;
         }
         .modal-content {
-            color: #666;
-            line-height: 1.6;
+            color: #444;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .modal-content p {
+            margin-bottom: 12px;
+        }
+        .modal-content p:last-child {
+            margin-bottom: 0;
         }
         .modal-close {
             position: absolute;
-            top: 16px;
-            right: 16px;
+            top: 20px;
+            right: 20px;
             width: 24px;
             height: 24px;
             display: flex;
@@ -433,48 +471,57 @@
             padding: 0 16px;
         }
         .service-card {
-            background-color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         }
         .service-title {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 600;
             color: #252525;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
             text-align: center;
         }
         .textarea-container {
             position: relative;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
         .service-textarea {
             width: 100%;
-            min-height: 120px;
-            padding: 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(200, 200, 200, 0.5);
-            background-color: rgba(255, 255, 255, 0.5);
+            min-height: 140px;
+            padding: 16px;
+            border-radius: 16px;
+            background-color: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             font-size: 1rem;
             resize: vertical;
+            border: none;
+            line-height: 1.6;
+        }
+        .service-textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(165, 210, 150, 0.3);
         }
         .service-buttons {
             display: flex;
             gap: 16px;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
+        }
+        @media (max-width: 480px) {
+            .service-buttons {
+                flex-direction: column;
+            }
         }
         .service-btn {
             flex: 1;
-            padding: 12px;
+            padding: 14px;
             border-radius: 12px;
             border: none;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             font-size: 1rem;
@@ -483,15 +530,13 @@
             transition: all 0.2s;
         }
         .service-btn:hover {
-            background-color: rgba(255, 255, 255, 0.7);
+            background-color: rgba(255, 255, 255, 0.8);
         }
         .encode-btn {
             color: #252525;
-            border: 1px solid rgba(200, 200, 200, 0.5);
         }
         .decode-btn {
             color: #252525;
-            border: 1px solid rgba(200, 200, 200, 0.5);
         }
         .result-container {
             position: relative;
@@ -500,10 +545,10 @@
             position: absolute;
             top: 12px;
             right: 12px;
-            padding: 6px 12px;
+            padding: 8px 16px;
             border-radius: 8px;
             border: none;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             font-size: 0.875rem;
@@ -511,19 +556,19 @@
             transition: all 0.2s;
         }
         .copy-btn:hover {
-            background-color: rgba(255, 255, 255, 0.7);
+            background-color: rgba(255, 255, 255, 0.8);
         }
         .result-text {
             width: 100%;
-            min-height: 120px;
-            padding: 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(200, 200, 200, 0.5);
-            background-color: rgba(255, 255, 255, 0.5);
+            min-height: 140px;
+            padding: 16px;
+            border-radius: 16px;
+            background-color: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             font-size: 1rem;
             resize: none;
+            border: none;
         }
         .copy-notification {
             position: fixed;
@@ -531,14 +576,34 @@
             right: 20px;
             background-color: #a5d296;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 12px;
             opacity: 0;
             transition: opacity 0.3s;
             z-index: 1000;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         .copy-notification.show {
             opacity: 1;
+        }
+        .external-link {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            text-decoration: none;
+            color: #252525;
+            font-weight: 500;
+            transition: all 0.2s;
+            text-align: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .external-link:hover {
+            background-color: rgba(255, 255, 255, 0.8);
         }
         
         /* 动态渐变背景的额外样式 */
@@ -618,8 +683,7 @@
                     <div class="logo-icon">
                         <img src="https://gpo.saobby.com/i/XlQ1PmuU5UPnej02.webp" alt="慕然科技Logo">
                     </div>
-                    <!-- 下一行><中间是logo旁边的文字 -->
-                    <span class="logo-text"></span>
+                    <span class="logo-text">慕然科技</span>
                 </div>
                 <div class="nav-links">
                     <div class="nav-item active" data-page="home">首页</div>
@@ -655,9 +719,9 @@
                     </div>
                 </div>
                 <div class="activity-card">
-                    <h3 class="activity-title">反CSense联盟</h3>
+                    <h3 class="activity-title">活动通知</h3>
                     <div class="activity-content">
-                        <p>QQ群号：2169061982<br>欢迎加入我们</p>
+                        <p>暂无活动</p>
                     </div>
                 </div>
             </div>
@@ -732,31 +796,31 @@
                         <ul class="card-list">
                             <li class="card-list-item">
                                 <span class="card-list-bullet"></span>
-                                🔥超多种类交互弹窗
+                                各种交互弹窗
                             </li>
                             <li class="card-list-item">
                                 <span class="card-list-bullet"></span>
-                                🛡防外挂安全保护组件
+                                安全保护组件
                             </li>
                             <li class="card-list-item">
                                 <span class="card-list-bullet"></span>
-                                💿在线播放指定音乐
+                                在线播放音乐
                             </li>
                             <li class="card-list-item">
                                 <span class="card-list-bullet"></span>
-                                📥任意格式下载文件
+                                文件下载
                             </li>
                             <li class="card-list-item">
                                 <span class="card-list-bullet"></span>
-                                🔗跳转至指定网页
+                                网页跳转
                             </li>
                             <li class="card-list-item">
                                 <span class="card-list-bullet"></span>
-                                🌟共创世界组件库
+                                发送系统消息
                             </li>
                             <li class="card-list-item">
                                 <span class="card-list-bullet"></span>
-                                🌟Morgan的工具箱
+                                Morgan的工具箱
                             </li>
                         </ul>
                         <p class="card-note">请在共创世界素材集市搜索"慕然科技"或"Morgan"。也可访问"工具"页的扩展库</p>
@@ -774,15 +838,15 @@
                         <p class="contact-detail">群号：1004706370</p>
                     </div>
                     <div class="card single-card">
-                        <h3 class="contact-title">合作与加入我们</h3>
-                        <p class="contact-detail">见合作页</p>
+                        <h3 class="contact-title">官方客服</h3>
+                        <p class="contact-detail">等等，快了</p>
                     </div>
                     <div class="card single-card">
-                        <h3 class="contact-title">GitHub账号</h3>
+                        <h3 class="contact-title">GitHub 账号</h3>
                         <p class="contact-detail">账号名称：ccwmoran</p>
                     </div>
                     <div class="card single-card">
-                        <h3 class="contact-title">微信公众号（客服）</h3>
+                        <h3 class="contact-title">微信公众号</h3>
                         <p class="contact-detail">慕然科技</p>
                     </div>
                 </div>
@@ -795,11 +859,12 @@
                 <div class="contact-cards">
                     <div class="card single-card">
                         <h3 class="contact-title">想和慕然科技合作？</h3>
-                        <p class="contact-detail">申请入口https://ccwmoran.mysxl.cn/</p>
+                        <p class="contact-detail">申请入口：https://ccwmoran.mysxl.cn/</p>
                     </div>
                     <div class="card single-card">
                         <h3 class="contact-title">想加入慕然科技？</h3>
-                        <p class="contact-detail">请加入慕然科技官方1群，并联系群主（群号见联系方式）或访问申请链接https://ccwmoran.mysxl.cn/</p>
+                        <p class="contact-detail">请加入慕然科技官方1群，并联系群主（群号见联系方式）</p>
+                        <p class="contact-detail">或访问申请链接：https://ccwmoran.mysxl.cn/</p>
                     </div>
                 </div>
             </div>
@@ -827,10 +892,10 @@
                             <div class="card-icon">
                                 <div class="card-dot"></div>
                             </div>
-                            <h3 class="card-title">慕然科技的网站密码安全测试</h3>
+                            <h3 class="card-title">慕然科技的Scratch积木扩展开发教程</h3>
                         </div>
-                        <p class="card-note">实际用途懂得都懂</p>
-                        <a href="https://ccwmoran.github.io/password/" target="_blank" class="service-btn encode-btn external-link" style="display: block; text-align: center; margin-top: 16px;">前往工具</a>
+                        <p class="card-note">教你如何开发自己的Scratch积木扩展，从基础到高级，详细讲解扩展开发流程和技巧。</p>
+                        <a href="https://kejicx.github.io/teach/" target="_blank" class="external-link">前往教程</a>
                     </div>
                     
                     <div class="card">
@@ -840,8 +905,8 @@
                             </div>
                             <h3 class="card-title">慕然科技Scratch积木扩展库</h3>
                         </div>
-                        <p class="card-note">丰富、实用的积木扩展库</p>
-                        <a href="https://ccwmoran.github.io/code/" target="_blank" class="service-btn encode-btn external-link" style="display: block; text-align: center; margin-top: 16px;">访问代码库</a>
+                        <p class="card-note">丰富、实用的积木扩展库，包含各种交互组件、工具函数和安全保护模块，助力你的Scratch创作。</p>
+                        <a href="https://ccwmoran.github.io/code/" target="_blank" class="external-link">访问代码库</a>
                     </div>
                 </div>
             </div>
@@ -849,19 +914,25 @@
         
         <div id="about" class="page about-page" style="display: none;">
             <div class="cards-container">
-                <h2 class="section-title">关于</h2>
+                <h2 class="section-title">关于我们</h2>
                 <div class="contact-cards">
                     <div class="card single-card">
                         <h3 class="contact-title">关于慕然科技</h3>
-                        <p class="contact-detail">创建时间：2023.5.4</p>
-                        <p class="contact-detail">室长：Morgan</p>
-                        <p class="contact-detail">人数：不知道，没数</p>
+                        <div class="contact-detail">
+                            <p>创建时间：2023年5月4日</p>
+                            <p>室长：Morgan</p>
+                            <p>成员数量：一个充满热情的创作团队</p>
+                            <p>宗旨：致力于为共创世界社区提供优质的Scratch作品和扩展工具</p>
+                        </div>
                     </div>
                     <div class="card single-card">
                         <h3 class="contact-title">关于Morgan</h3>
-                        <p class="contact-detail">住址：中华人民共和国浙江省杭州市</p>
-                        <p class="contact-detail">最喜欢的歌：日落（嗯对，太好听了）</p>
-                        <p class="contact-detail">爱好：编程、数码、设计、听燕姿的歌等</p>
+                        <div class="contact-detail">
+                            <p>住址：中华人民共和国浙江省杭州市</p>
+                            <p>最喜欢的歌：日落（嗯对，太好听了）</p>
+                            <p>爱好：编程、数码产品探索、界面设计、听孙燕姿的歌</p>
+                            <p>技术专长：Scratch扩展开发、Web前端、用户体验设计</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -870,7 +941,7 @@
     
     <footer>
         <div class="footer-content">
-            <p>© 2026 慕然科技CCWMORAN. 保留所有权利.</p>
+            <p>© 2025 慕然科技CCWMORAN. 保留所有权利.</p>
             <div class="footer-links">
                 <a href="https://ccw.site/s/233J3" target="_blank" class="footer-link external-link">慕然科技的共创主页↗</a>
                 <a href="https://ccw.site/s/bL4gnr" target="_blank" class="footer-link external-link">Morgan的共创主页↗</a>
@@ -891,8 +962,12 @@
             </div>
             <h3 class="modal-title">版本更新日志</h3>
             <div class="modal-content">
-                <p>版本号：5.1</p>
-                <p>更新内容：修复了已知问题，优化了部分细节。</p>
+                <p><strong>版本号：5.2</strong></p>
+                <p>更新内容：</p>
+                <p>1. 优化界面设计，删除内容卡片边框</p>
+                <p>2. 增强拟态玻璃效果，提升视觉层次</p>
+                <p>3. 改进内容排版，增强可读性</p>
+                <p>4. 调整色彩对比度，优化用户体验</p>
             </div>
         </div>
     </div>
@@ -907,11 +982,12 @@
             </div>
             <h3 class="modal-title">跳转确认</h3>
             <div class="modal-content">
-                <p>即将跳转至：
-                    <span id="redirectTarget"></span></p>
+                <p>即将跳转至外部网站：</p>
+                <p id="redirectTarget"></p>
+                <p>请注意，该链接将引导您离开当前页面。</p>
             </div>
             <div class="service-buttons" style="margin-top: 24px;">
-                <button class="service-btn encode-btn" id="redirectConfirm">跳转</button>
+                <button class="service-btn encode-btn" id="redirectConfirm">继续跳转</button>
                 <button class="service-btn decode-btn" id="redirectCancel">取消</button>
             </div>
         </div>
@@ -942,8 +1018,12 @@
                     setTimeout(() => {
                         targetPage.classList.add('active');
                     }, 10);
+                    
+                    // 滚动到页面顶部
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             });
+            
             // 悬浮导航栏效果
             const nav = document.querySelector('.sticky-nav');
             let lastScrollTop = 0;
@@ -956,6 +1036,7 @@
                 }
                 lastScrollTop = scrollTop;
             });
+            
             // 版本更新日志弹窗
             const versionLog = document.getElementById('versionLog');
             const versionModal = document.getElementById('versionModal');
@@ -978,6 +1059,7 @@
                     closeModal();
                 }
             });
+            
             // 跳转确认弹窗
             const redirectModal = document.getElementById('redirectModal');
             const redirectModalClose = document.getElementById('redirectModalClose');
@@ -985,6 +1067,7 @@
             const redirectConfirm = document.getElementById('redirectConfirm');
             const redirectCancel = document.getElementById('redirectCancel');
             let pendingRedirectUrl = null;
+            
             function closeRedirectModal() {
                 redirectModal.querySelector('.modal').classList.remove('active');
                 setTimeout(() => {
@@ -992,11 +1075,12 @@
                 }, 300);
                 pendingRedirectUrl = null;
             }
+            
             redirectModalClose.addEventListener('click', closeRedirectModal);
             redirectCancel.addEventListener('click', closeRedirectModal);
             redirectConfirm.addEventListener('click', function() {
                 if (pendingRedirectUrl) {
-                    window.location.href = pendingRedirectUrl;
+                    window.open(pendingRedirectUrl, '_blank');
                 }
                 closeRedirectModal();
             });
@@ -1005,58 +1089,77 @@
                     closeRedirectModal();
                 }
             });
+            
             // 为所有外部链接添加跳转确认
-            const externalLinks = document.querySelectorAll('.external-link');
+            const externalLinks = document.querySelectorAll('.external-link, .footer-link');
             externalLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // 获取链接文本（去掉箭头符号）
-                    let linkText = this.textContent.replace('↗', '').trim();
-                    if (linkText === '') {
-                        // 如果是导航栏中的链接，使用href属性
-                        linkText = this.href;
+                    if (this.href && this.href !== '#') {
+                        e.preventDefault();
+                        // 获取链接文本（去掉箭头符号）
+                        let linkText = this.textContent.replace('↗', '').trim();
+                        if (linkText === '' || linkText === '前往教程' || linkText === '访问代码库') {
+                            // 使用href属性
+                            linkText = this.href;
+                        }
+                        redirectTarget.textContent = linkText.length > 50 ? linkText.substring(0, 50) + '...' : linkText;
+                        pendingRedirectUrl = this.href;
+                        redirectModal.classList.add('active');
+                        setTimeout(() => {
+                            redirectModal.querySelector('.modal').classList.add('active');
+                        }, 10);
                     }
-                    redirectTarget.textContent = linkText;
-                    pendingRedirectUrl = this.href;
-                    redirectModal.classList.add('active');
-                    setTimeout(() => {
-                        redirectModal.querySelector('.modal').classList.add('active');
-                    }, 10);
                 });
             });
+            
             // Base64 服务功能
             const inputText = document.getElementById('inputText');
-            const resultText = document.getElementById('resultText');
             const encodeBtn = document.getElementById('encodeBtn');
             const decodeBtn = document.getElementById('decodeBtn');
-            const copyBtn = document.getElementById('copyBtn');
             const copyNotification = document.getElementById('copyNotification');
+            
             // 编码功能
             encodeBtn.addEventListener('click', function() {
                 const text = inputText.value;
                 if (text) {
                     try {
                         const encoded = btoa(unescape(encodeURIComponent(text)));
-                        alert("编码结果已复制到剪贴板: " + encoded);
+                        // 显示通知
+                        copyNotification.textContent = "编码结果已复制到剪贴板";
+                        copyNotification.classList.add('show');
+                        setTimeout(() => {
+                            copyNotification.classList.remove('show');
+                        }, 3000);
                         navigator.clipboard.writeText(encoded);
                     } catch (e) {
                         alert('编码失败：无效字符');
                     }
+                } else {
+                    alert('请输入需要编码的内容');
                 }
             });
+            
             // 解码功能
             decodeBtn.addEventListener('click', function() {
                 const text = inputText.value;
                 if (text) {
                     try {
                         const decoded = decodeURIComponent(escape(atob(text)));
-                        alert("解码结果已复制到剪贴板: " + decoded);
+                        // 显示通知
+                        copyNotification.textContent = "解码结果已复制到剪贴板";
+                        copyNotification.classList.add('show');
+                        setTimeout(() => {
+                            copyNotification.classList.remove('show');
+                        }, 3000);
                         navigator.clipboard.writeText(decoded);
                     } catch (e) {
                         alert('解码失败：无效的Base64字符串');
                     }
+                } else {
+                    alert('请输入需要解码的Base64字符串');
                 }
             });
+            
             // 随机表情符号
             const randomEmoji = document.getElementById('randomEmoji');
             const welcomeEmojis = ['🤣', '😍', '🥰', '🥳', '🤩', '😎', '😋', '🙌', '🫶', '👍', '✌', '🤓', '🤟', '🤙', '🎊', '🎉', '🪄', '🎁', '🎈'];
