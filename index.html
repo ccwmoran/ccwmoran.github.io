@@ -2,964 +2,714 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=1">
-    <title>CCWMORAN｜慕然科技</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="CCW共创世界编程社区慕然科技工作室（原科技创新），致力于开发Scratch作品和Scratch积木扩展的小型计算机、编程工作室。">
-    <meta name="keywords" content="慕然科技,慕然科技工作室,慕然科技官网,慕然科技工作室官网,共创世界慕然科技工作室,共创世界慕然科技官网,共创世界慕然科技工作室官网,共创世界编程社区,ccw,ccw共创世界,ccw慕然科技,ccw工作室,科技创新,科技创新工作室,科技创新官网,科技创新工作室官网,共创世界科技创新,共创世界科技创新工作室官网">
-    <meta name="author" content="慕然科技">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="慕然科技工作室官网">
-    <meta property="og:description" content="CCW共创世界编程社区慕然科技工作室（原科技创新），致力于开发Scratch作品和Scratch积木扩展的小型计算机、编程工作室。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ccwmoran.github.io">
-    <meta property="og:image" content="https://gpo.saobby.com/i/XlQ1PmuU5UPnej02.webp">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="慕然科技工作室官网">
-    <meta name="twitter:description" content="CCW共创世界编程社区慕然科技工作室（原科技创新），致力于开发Scratch作品和Scratch积木扩展的小型计算机、编程工作室。">
-    <meta name="twitter:image" content="https://gpo.saobby.com/i/XlQ1PmuU5UPnej02.webp">
-    
-    <link rel="icon" href="https://gpo.saobby.com/i/XlQ1PmuU5UPnej02.webp" type="image/webp">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCWMORAN慕然科技</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #a5d296;
+            --secondary-color: #5ca05c;
+            --background-color: #ffffff;
+            --text-color: #333333;
+            --light-text: #666666;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --glass-effect: blur(10px);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
         }
+        
         body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #ffffff 0%, #ffffff 30%, #a5d296 70%, #5ac05c 100%);
-            background-size: 400% 400%;
-            animation: gradientMove 15s ease infinite;
-            color: #252525;
-            overflow-x: hidden;
-            transition: background-color 0.3s;
+            background-color: var(--background-color);
+            color: var(--text-color);
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-        .page {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.3s, transform 0.3s;
-        }
-        .page.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .sticky-nav {
-            position: sticky;
-            top: 16px;
-            z-index: 50;
-            margin: 0 auto;
-            max-width: 1280px;
-            border-radius: 16px;
+        
+        /* 导航栏样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--card-bg);
+            backdrop-filter: var(--glass-effect);
+            -webkit-backdrop-filter: var(--glass-effect);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 15px 0;
             transition: all 0.3s ease;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            background-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         }
-        .sticky-nav.scrolled {
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-        }
+        
         .nav-container {
-            padding: 0 16px;
-        }
-        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            height: 56px;
+            align-items: center;
+            padding: 0 20px;
         }
+        
         .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
             display: flex;
             align-items: center;
         }
+        
         .logo-icon {
-            background-color: rgba(165, 210, 150, 0.1);
-            padding: 8px;
-            border-radius: 12px;
-            margin-right: 8px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
+        
         .logo-icon img {
-            height: 24px;
-            width: auto;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 修改为contain确保完整显示 */
         }
-        .logo-text {
-            font-weight: 600;
-            font-size: 1.25rem;
-            color: #252525;
-            letter-spacing: -0.025em;
-        }
+        
         .nav-links {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            list-style: none;
         }
-        .nav-item {
-            padding: 8px 12px;
-            border-radius: 12px;
-            font-size: 0.875rem;
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
             font-weight: 500;
-            color: #252525;
-            transition: all 0.2s;
-            cursor: pointer;
+            transition: color 0.3s;
+            position: relative;
         }
-        .nav-item.active {
-            background-color: #a5d296;
-            color: #252525;
-            font-weight: 600;
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
         }
-        .nav-item:hover:not(.active) {
-            background-color: rgba(255, 255, 255, 0.3);
+        
+        .nav-links a.active {
+            color: var(--secondary-color);
         }
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--secondary-color);
         }
+        
+        /* 主内容区域 */
         .main-content {
-            padding-top: 72px;
+            margin-top: 80px;
+            padding: 40px 20px;
         }
-        .home-page {
-            min-height: 100vh;
-            padding-top: 72px;
+        
+        .section {
+            max-width: 1200px;
+            margin: 0 auto 60px;
         }
-        .home-content {
+        
+        .section-title {
             text-align: center;
-            margin-top: 32px;
-            margin-bottom: 24px;
-            padding: 0 16px;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+            position: relative;
         }
-        .home-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #252525;
-            margin-bottom: 12px;
-            line-height: 1.2;
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 10px auto;
         }
-        @media (max-width: 768px) {
-            .home-title {
-                font-size: 2rem;
-            }
+        
+        /* 卡片样式 */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: var(--glass-effect);
+            -webkit-backdrop-filter: var(--glass-effect);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
         }
-        .home-subtitle {
-            font-size: 1.5rem;
-            color: #5ac05c;
-            font-weight: 500;
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
-            margin-bottom: 24px;
+        
+        .card:hover {
+            transform: translateY(-5px);
         }
-        @media (max-width: 768px) {
-            .home-subtitle {
-                font-size: 1.25rem;
-            }
-        }
-        .announcements-container {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 16px;
-            margin-bottom: 48px;
-        }
-        @media (max-width: 768px) {
-            .announcements-container {
-                flex-direction: column;
-                gap: 24px;
-            }
-        }
-        .announcement-card, .activity-card {
-            flex: 1;
-            min-width: 300px;
-            background-color: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 32px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-        }
-        .announcement-title, .activity-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #252525;
-            margin-bottom: 20px;
+        
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
             display: flex;
             align-items: center;
         }
-        .announcement-title::before, .activity-title::before {
+        
+        .card-title::before {
             content: '';
             display: inline-block;
-            width: 8px;
-            height: 8px;
-            background-color: #a5d296;
-            border-radius: 50%;
-            margin-right: 12px;
+            width: 6px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 3px;
+            margin-right: 10px;
         }
-        .announcement-content, .activity-content {
-            color: #444;
-            line-height: 1.8;
-            white-space: pre-wrap;
-            word-break: break-word;
-            text-align: left;
-            font-size: 1.05rem;
-        }
-        .announcement-content p, .activity-content p {
-            margin-bottom: 16px;
-        }
-        .announcement-content p:last-child, .activity-content p:last-child {
-            margin-bottom: 0;
-        }
-        .section-title {
-            font-size: 2.25rem;
-            font-weight: 700;
+        
+        /* 首页样式 */
+        .hero {
             text-align: center;
-            color: #252525;
-            margin-bottom: 48px;
-            padding: 0 16px;
-            line-height: 1.2;
-        }
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 1.875rem;
-                margin-bottom: 40px;
-            }
-        }
-        .works-page, .contact-page, .collaboration-page, .service-page, .about-page {
-            padding-top: 72px;
-            padding-bottom: 72px;
-        }
-        .cards-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 16px;
-        }
-        .cards-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-        }
-        .service-page .cards-grid {
-            grid-template-columns: 1fr;
-        }
-        .card {
-            background-color: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(165, 210, 150, 0.1) 0%, rgba(255, 255, 255, 0.5) 100%);
             border-radius: 20px;
-            padding: 32px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
         }
-        .card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 24px;
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
         }
-        .card-icon {
-            background-color: rgba(165, 210, 150, 0.1);
-            padding: 10px;
-            border-radius: 12px;
-            margin-right: 16px;
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto;
         }
-        .card-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #a5d296;
-            border-radius: 50%;
+        
+        /* 作品网格 */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
         }
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #252525;
+        
+        .work-item {
+            background: var(--card-bg);
+            backdrop-filter: var(--glass-effect);
+            -webkit-backdrop-filter: var(--glass-effect);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
         }
-        .card-list {
+        
+        .work-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .work-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .work-list {
             list-style: none;
-            margin-left: 8px;
+            margin-top: 15px;
         }
-        .card-list-item {
+        
+        .work-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             display: flex;
             align-items: center;
-            padding-left: 12px;
-            border-left: 2px solid rgba(165, 210, 150, 0.3);
-            padding-top: 10px;
-            padding-bottom: 10px;
-            font-size: 1.05rem;
-            color: #444;
         }
-        .card-list-bullet {
-            width: 8px;
-            height: 8px;
-            background-color: #a5d296;
-            border-radius: 50%;
-            margin-right: 12px;
-            flex-shrink: 0;
+        
+        .work-list li:last-child {
+            border-bottom: none;
         }
-        .card-note {
-            font-size: 0.95rem;
-            color: #666;
+        
+        .work-list li::before {
+            content: '•';
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .note {
             font-style: italic;
-            margin-top: 24px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(225, 225, 225, 0.3);
-            line-height: 1.6;
+            color: var(--light-text);
+            margin-top: 15px;
+            font-size: 0.9rem;
         }
-        .contact-cards {
-            max-width: 768px;
-            margin: 0 auto;
+        
+        /* 联系方式样式 */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
         }
-        .single-card {
-            max-width: 768px;
-            margin: 0 auto 32px;
-        }
-        .contact-title {
-            font-size: 1.375rem;
-            font-weight: 600;
-            color: #252525;
-            margin-bottom: 12px;
-        }
-        .contact-detail {
-            color: #444;
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-        .contact-detail p {
-            margin-bottom: 8px;
-        }
-        .contact-detail p:last-child {
-            margin-bottom: 0;
-        }
-        footer {
-            background-color: rgba(245, 245, 245, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 32px 0;
-            margin-top: 32px;
-        }
-        .footer-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 16px;
+        
+        .contact-item {
             text-align: center;
-            color: #666;
-            font-size: 0.95rem;
+            padding: 20px;
         }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        /* 关于我们样式 - 修改为居中并加宽 */
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        /* 工具样式 */
+        .tool-card {
+            text-align: center;
+        }
+        
+        .tool-input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .tool-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            background: var(--primary-color);
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--secondary-color);
+        }
+        
+        .btn-secondary {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--text-color);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        /* mysxl链接按钮样式 - 改为主题绿色 */
+        .mysxl-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        
+        .mysxl-link:hover {
+            background: var(--secondary-color);
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background: rgba(0, 0, 0, 0.03);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 24px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        .footer-link {
-            color: #666;
-            text-decoration: none;
-            transition: color 0.2s;
-            font-size: 0.95rem;
-        }
-        .footer-link:hover {
-            color: #252525;
-        }
-        .version-log {
-            color: #a5d296;
-            cursor: pointer;
-            text-decoration: underline;
-            display: inline-block;
-            margin-top: 16px;
-            font-size: 0.95rem;
-        }
-        .version-log:hover {
-            color: #8bc34a;
-        }
-        .counter {
-            margin-top: 16px;
-            font-size: 0.95rem;
-        }
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        .modal {
-            background-color: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 20px;
-            width: 90%;
-            max-width: 400px;
-            padding: 32px;
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        .modal.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        .modal-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #252525;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .modal-content {
-            color: #444;
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-        .modal-content p {
-            margin-bottom: 12px;
-        }
-        .modal-content p:last-child {
-            margin-bottom: 0;
-        }
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: #666;
-            transition: all 0.2s;
-        }
-        .modal-close:hover {
-            color: #252525;
-            transform: rotate(90deg);
-        }
-        .service-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 16px;
-        }
-        .service-card {
-            background-color: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 32px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-        }
-        .service-title {
-            font-size: 1.75rem;
-            font-weight: 600;
-            color: #252525;
-            margin-bottom: 28px;
-            text-align: center;
-        }
-        .textarea-container {
-            position: relative;
-            margin-bottom: 24px;
-        }
-        .service-textarea {
-            width: 100%;
-            min-height: 140px;
-            padding: 16px;
-            border-radius: 16px;
-            background-color: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            font-size: 1rem;
-            resize: vertical;
-            border: none;
-            line-height: 1.6;
-        }
-        .service-textarea:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(165, 210, 150, 0.3);
-        }
-        .service-buttons {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 28px;
-        }
-        @media (max-width: 480px) {
-            .service-buttons {
-                flex-direction: column;
-            }
-        }
-        .service-btn {
-            flex: 1;
-            padding: 14px;
-            border-radius: 12px;
-            border: none;
-            background-color: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .service-btn:hover {
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-        .encode-btn {
-            color: #252525;
-        }
-        .decode-btn {
-            color: #252525;
-        }
-        .result-container {
-            position: relative;
-        }
-        .copy-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            padding: 8px 16px;
-            border-radius: 8px;
-            border: none;
-            background-color: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .copy-btn:hover {
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-        .result-text {
-            width: 100%;
-            min-height: 140px;
-            padding: 16px;
-            border-radius: 16px;
-            background-color: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            font-size: 1rem;
-            resize: none;
-            border: none;
-        }
-        .copy-notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #a5d296;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 12px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 1000;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        .copy-notification.show {
-            opacity: 1;
-        }
-        .external-link {
-            display: inline-block;
-            padding: 14px 28px;
-            background-color: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 12px;
-            text-decoration: none;
-            color: #252525;
-            font-weight: 500;
-            transition: all 0.2s;
-            text-align: center;
-            margin-top: 20px;
-            width: 100%;
-        }
-        .external-link:hover {
-            background-color: rgba(255, 255, 255, 0.8);
+            gap: 30px;
+            margin: 20px 0;
         }
         
-        /* 动态渐变背景的额外样式 */
-        .dynamic-background {
+        .footer-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .works-grid, .contact-grid, .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        /* 隐藏所有页面，只显示当前活动页面 */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* 模态框样式 - 优化弹窗动画 */
+        .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            opacity: 0.8;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
-        .gradient-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.5;
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
         }
         
-        .blob-1 {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, #a5d296 0%, #5ac05c 100%);
-            top: 10%;
-            left: 10%;
-            animation: float 25s ease-in-out infinite;
+        .modal {
+            background: var(--card-bg);
+            backdrop-filter: var(--glass-effect);
+            -webkit-backdrop-filter: var(--glass-effect);
+            border-radius: 15px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transform: scale(0.7);
+            opacity: 0;
+            transition: all 0.3s ease;
         }
         
-        .blob-2 {
-            width: 250px;
-            height: 250px;
-            background: linear-gradient(135deg, #5ac05c 0%, #ffffff 100%);
-            top: 60%;
-            right: 15%;
-            animation: float 30s ease-in-out infinite reverse;
+        .modal-overlay.active .modal {
+            transform: scale(1);
+            opacity: 1;
         }
         
-        .blob-3 {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, #ffffff 0%, #a5d296 100%);
-            bottom: 20%;
-            left: 20%;
-            animation: float 35s ease-in-out infinite;
+        .modal-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            text-align: center;
         }
         
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            25% {
-                transform: translate(30px, 50px) scale(1.1);
-            }
-            50% {
-                transform: translate(-20px, 30px) scale(0.9);
-            }
-            75% {
-                transform: translate(40px, -20px) scale(1.05);
-            }
+        .modal-content {
+            margin-bottom: 20px;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--secondary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 2001;
+        }
+        
+        .copy-notification.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
         }
     </style>
 </head>
-
 <body>
-    <!-- 动态渐变背景 -->
-    <div class="dynamic-background">
-        <div class="gradient-blob blob-1"></div>
-        <div class="gradient-blob blob-2"></div>
-        <div class="gradient-blob blob-3"></div>
-    </div>
-    
-    <nav class="sticky-nav">
+    <!-- 导航栏 -->
+    <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-content">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <img src="https://gpo.saobby.com/i/XlQ1PmuU5UPnej02.webp" alt="慕然科技Logo">
-                    </div>
-                    <span class="logo-text">慕然科技</span>
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="https://gpo.saobby.com/i/XlQ1PmuU5UPnej02.webp" alt="慕然科技Logo">
                 </div>
-                <div class="nav-links">
-                    <div class="nav-item active" data-page="home">首页</div>
-                    <div class="nav-item" data-page="works">精选</div>
-                    <div class="nav-item" data-page="service">工具</div>
-                    <div class="nav-item" data-page="contact">联系方式</div>
-                    <div class="nav-item" data-page="collaboration">合作</div>
-                    <div class="nav-item" data-page="about">关于</div>
-                </div>
-                <div class="nav-actions">
-                    <button class="mobile-menu-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                    <div id="randomEmoji" style="font-size: 1.5rem; margin-left: 8px; display: inline-block;">😍</div>
-                </div>
+                <span>慕然科技</span>
             </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">首页</a></li>
+                <li><a href="#works" class="nav-link">精选作品</a></li>
+                <li><a href="#tools" class="nav-link">实用工具</a></li>
+                <li><a href="#contact" class="nav-link">联系方式</a></li>
+                <li><a href="#about" class="nav-link">关于我们</a></li>
+            </ul>
         </div>
     </nav>
-    
-    <main class="main-content">
-        <div id="home" class="page home-page active">
-            <div class="home-content">
-                <h1 class="home-title">慕然科技CCWMORAN</h1>
-                <p class="home-subtitle">和我们一起共创世界、科技创新吧！</p>
+
+    <!-- 主内容区域 -->
+    <div class="main-content">
+        <!-- 首页 -->
+        <section id="home" class="page active">
+            <div class="hero fade-in">
+                <h1>慕然科技 CCWMORAN</h1>
+                <p>和我们一起共创世界、科技创新吧！</p>
             </div>
-            <div class="announcements-container">
-                <div class="announcement-card">
-                    <h3 class="announcement-title">官方公告</h3>
-                    <div class="announcement-content">
-                        <p>慕然科技坚决反对一切违规扩展、作品、开发者。坚决反对一切通过违规手段偷币、偷关注、偷点赞、偷收藏等违规行为。</p>
-                    </div>
+            
+            <div class="section">
+                <div class="card">
+                    <h2 class="card-title">官方公告</h2>
+                    <p>慕然科技坚决反对一切违规扩展、作品、开发者。坚决反对一切通过违规手段偷币、偷关注、偷点赞、偷收藏等违规行为。</p>
                 </div>
-                <div class="activity-card">
-                    <h3 class="activity-title">活动通知</h3>
-                    <div class="activity-content">
-                        <p>暂无活动</p>
-                    </div>
+                
+                <div class="card">
+                    <h2 class="card-title">活动通知</h2>
+                    <p>暂无活动</p>
                 </div>
             </div>
-        </div>
-        
-        <div id="works" class="page works-page" style="display: none;">
-            <div class="cards-container">
+        </section>
+
+        <!-- 精选作品 -->
+        <section id="works" class="page">
+            <div class="section">
                 <h2 class="section-title">慕然科技的精选作品</h2>
-                <div class="cards-grid">
-                    <!-- Scratch 作品 -->
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-icon">
-                                <div class="card-dot"></div>
-                            </div>
-                            <h3 class="card-title">Scratch作品</h3>
-                        </div>
-                        <ul class="card-list">
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                缤纷绘画
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                Copilot 模拟
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                共创 AI
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                Windows 模拟
-                            </li>
+                
+                <div class="works-grid">
+                    <div class="work-item fade-in">
+                        <h3>Scratch作品</h3>
+                        <ul class="work-list">
+                            <li>缤纷绘画</li>
+                            <li>Copilot 模拟</li>
+                            <li>共创 AI</li>
+                            <li>Windows 模拟</li>
                         </ul>
-                        <p class="card-note">请前往共创世界慕然科技的主页试玩作品</p>
+                        <p class="note">请前往共创世界慕然科技的主页试玩作品</p>
                     </div>
                     
-                    <!-- 文章 -->
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-icon">
-                                <div class="card-dot"></div>
-                            </div>
-                            <h3 class="card-title">文章</h3>
-                        </div>
-                        <ul class="card-list">
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                没用的教程
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                无聊的科普
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                小众的神应用分享
-                            </li>
+                    <div class="work-item fade-in">
+                        <h3>文章</h3>
+                        <ul class="work-list">
+                            <li>没用的教程</li>
+                            <li>无聊的科普</li>
+                            <li>小众的神应用分享</li>
                         </ul>
-                        <p class="card-note">请前往共创世界Morgan的主页"文章"页面浏览</p>
+                        <p class="note">请前往共创世界Morgan的主页"文章"页面浏览</p>
                     </div>
                     
-                    <!-- 积木扩展 -->
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-icon">
-                                <div class="card-dot"></div>
-                            </div>
-                            <h3 class="card-title">积木扩展</h3>
-                        </div>
-                        <ul class="card-list">
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                各种交互弹窗
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                安全保护组件
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                在线播放音乐
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                文件下载
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                网页跳转
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                发送系统消息
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                Morgan的工具箱
-                            </li>
+                    <div class="work-item fade-in">
+                        <h3>积木扩展</h3>
+                        <ul class="work-list">
+                            <li>各种交互弹窗</li>
+                            <li>安全保护组件</li>
+                            <li>在线播放音乐</li>
+                            <li>文件下载</li>
+                            <li>网页跳转</li>
+                            <li>发送系统消息</li>
+                            <li>Morgan的工具箱</li>
                         </ul>
-                        <p class="card-note">请在共创世界素材集市搜索"慕然科技"或"Morgan"。也可访问"工具"页的扩展库</p>
+                        <p class="note">请在共创世界素材集市搜索"慕然科技"或"Morgan"。也可访问"工具"页的扩展库</p>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div id="contact" class="page contact-page" style="display: none;">
-            <div class="cards-container">
-                <h2 class="section-title">联系我们</h2>
-                <div class="contact-cards">
-                    <div class="card single-card">
-                        <h3 class="contact-title">官方 QQ 群</h3>
-                        <p class="contact-detail">群号：1004706370</p>
-                    </div>
-                    <div class="card single-card">
-                        <h3 class="contact-title">官方客服</h3>
-                        <p class="contact-detail">等等，快了</p>
-                    </div>
-                    <div class="card single-card">
-                        <h3 class="contact-title">GitHub 账号</h3>
-                        <p class="contact-detail">账号名称：ccwmoran</p>
-                    </div>
-                    <div class="card single-card">
-                        <h3 class="contact-title">微信公众号</h3>
-                        <p class="contact-detail">慕然科技</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="collaboration" class="page collaboration-page" style="display: none;">
-            <div class="cards-container">
-                <h2 class="section-title">合作项目</h2>
-                <div class="contact-cards">
-                    <div class="card single-card">
-                        <h3 class="contact-title">想和慕然科技合作？</h3>
-                        <p class="contact-detail">申请入口：https://ccwmoran.mysxl.cn/</p>
-                    </div>
-                    <div class="card single-card">
-                        <h3 class="contact-title">想加入慕然科技？</h3>
-                        <p class="contact-detail">请加入慕然科技官方1群，并联系群主（群号见联系方式）</p>
-                        <p class="contact-detail">或访问申请链接：https://ccwmoran.mysxl.cn/</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="service" class="page service-page" style="display: none;">
-            <div class="cards-container">
+        </section>
+
+        <!-- 实用工具 -->
+        <section id="tools" class="page">
+            <div class="section">
                 <h2 class="section-title">实用工具</h2>
-                <div class="cards-grid">
-                    <div class="card">
-                        <div class="service-card">
-                            <h2 class="service-title">Base64 编码与解码</h2>
-                            <div class="textarea-container">
-                                <textarea class="service-textarea" id="inputText" placeholder="请输入需要编码或解码的内容..."></textarea>
-                            </div>
-                            <div class="service-buttons">
-                                <button class="service-btn encode-btn" id="encodeBtn">编码为 Base64</button>
-                                <button class="service-btn decode-btn" id="decodeBtn">解码 Base64</button>
-                            </div>
-                        </div>
+                
+                <div class="card tool-card fade-in">
+                    <h2 class="card-title">Base64 编码与解码</h2>
+                    <textarea class="tool-input" id="inputText" placeholder="请输入需要编码或解码的内容..."></textarea>
+                    <div class="tool-buttons">
+                        <button class="btn" id="encodeBtn">编码为 Base64</button>
+                        <button class="btn btn-secondary" id="decodeBtn">解码 Base64</button>
+                    </div>
+                    <div class="result-container">
+                        <textarea class="tool-input" id="resultText" placeholder="结果将显示在这里..." readonly></textarea>
+                        <button class="btn" id="copyBtn" style="display: none;">复制结果</button>
+                    </div>
+                </div>
+                
+                <div class="works-grid">
+                    <div class="work-item fade-in">
+                        <h3>Scratch积木扩展开发教程</h3>
+                        <p>教你如何开发自己的Scratch积木扩展，从基础到高级，详细讲解扩展开发流程和技巧。</p>
+                        <button class="btn" style="margin-top: 15px;" onclick="confirmRedirect('https://kejicx.github.io/teach/')">前往教程</button>
                     </div>
                     
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-icon">
-                                <div class="card-dot"></div>
-                            </div>
-                            <h3 class="card-title">慕然科技的Scratch积木扩展开发教程</h3>
-                        </div>
-                        <p class="card-note">教你如何开发自己的Scratch积木扩展，从基础到高级，详细讲解扩展开发流程和技巧。</p>
-                        <a href="https://kejicx.github.io/teach/" target="_blank" class="external-link">前往教程</a>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-icon">
-                                <div class="card-dot"></div>
-                            </div>
-                            <h3 class="card-title">慕然科技Scratch积木扩展库</h3>
-                        </div>
-                        <p class="card-note">丰富、实用的积木扩展库，包含各种交互组件、工具函数和安全保护模块，助力你的Scratch创作。</p>
-                        <a href="https://ccwmoran.github.io/code/" target="_blank" class="external-link">访问代码库</a>
+                    <div class="work-item fade-in">
+                        <h3>Scratch积木扩展库</h3>
+                        <p>丰富、实用的积木扩展库，包含各种交互组件、工具函数和安全保护模块，助力你的Scratch创作。</p>
+                        <button class="btn" style="margin-top: 15px;" onclick="confirmRedirect('https://ccwmoran.github.io/code/')">访问代码库</button>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div id="about" class="page about-page" style="display: none;">
-            <div class="cards-container">
+        </section>
+
+        <!-- 联系方式 -->
+        <section id="contact" class="page">
+            <div class="section">
+                <h2 class="section-title">联系我们</h2>
+                
+                <div class="contact-grid">
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">
+                            <i class="fab fa-qq"></i>
+                        </div>
+                        <h3>官方 QQ 群</h3>
+                        <p>群号：1004706370</p>
+                    </div>
+                    
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <h3>GitHub 账号</h3>
+                        <p>账号名称：ccwmoran</p>
+                    </div>
+                    
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">
+                            <i class="fab fa-weixin"></i>
+                        </div>
+                        <h3>微信公众号</h3>
+                        <p>慕然科技</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in" style="margin-top: 40px;">
+                    <h2 class="card-title">合作项目</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px;">
+                        <div>
+                            <h3>想和慕然科技合作？</h3>
+                            <p>申请入口：</p>
+                            <a href="https://ccwmoran.mysxl.cn/" class="mysxl-link" target="_blank">https://ccwmoran.mysxl.cn/</a>
+                        </div>
+                        <div>
+                            <h3>想加入慕然科技？</h3>
+                            <p>请加入慕然科技官方1群，并联系群主（群号见联系方式）</p>
+                            <p>或访问申请链接：</p>
+                            <a href="https://ccwmoran.mysxl.cn/" class="mysxl-link" target="_blank">https://ccwmoran.mysxl.cn/</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我们 -->
+        <section id="about" class="page">
+            <div class="section">
                 <h2 class="section-title">关于我们</h2>
-                <div class="contact-cards">
-                    <div class="card single-card">
-                        <h3 class="contact-title">关于慕然科技</h3>
-                        <div class="contact-detail">
-                            <p>创建时间：2023年5月4日</p>
-                            <p>室长：Morgan</p>
-                            <p>成员数量：没数过，反正不多</p>
-                            <p>宗旨：致力于开发Scratch作品和扩展工具</p>
-                        </div>
+                
+                <div class="about-content">
+                    <div class="card fade-in">
+                        <h2 class="card-title">关于慕然科技</h2>
+                        <p>创建时间：2023年5月4日</p>
+                        <p>室长：Morgan</p>
+                        <p>成员数量：没数过，反正不多</p>
+                        <p>宗旨：致力于开发Scratch作品和扩展工具</p>
                     </div>
-                    <div class="card single-card">
-                        <h3 class="contact-title">关于Morgan</h3>
-                        <div class="contact-detail">
-                            <p>住址：中华人民共和国浙江省杭州市</p>
-                            <p>最喜欢的歌：日落（嗯对，太好听了）</p>
-                            <p>爱好：编程、数码产品探索、界面设计、听孙燕姿的歌</p>
-                            <p>技术专长：Scratch扩展开发、UI设计、数码科技</p>
-                        </div>
+                    
+                    <div class="card fade-in">
+                        <h2 class="card-title">关于Morgan</h2>
+                        <p>住址：中华人民共和国浙江省杭州市</p>
+                        <p>最喜欢的歌：日落（嗯对，太好听了）</p>
+                        <p>爱好：编程、数码产品探索、界面设计、听孙燕姿的歌</p>
+                        <p>技术专长：Scratch扩展开发、UI设计、数码科技</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-    
+        </section>
+    </div>
+
+    <!-- 页脚 -->
     <footer>
-        <div class="footer-content">
-            <p>© 2025 慕然科技CCWMORAN. 保留所有权利.</p>
-            <div class="footer-links">
-                <a href="https://ccw.site/s/233J3" target="_blank" class="footer-link external-link">慕然科技的共创主页↗</a>
-                <a href="https://ccw.site/s/bL4gnr" target="_blank" class="footer-link external-link">Morgan的共创主页↗</a>
-            </div>
-            <div class="counter">该网页已被访问 
-                <img src="https://w.saobby.com/w/cbudl97s"> 次（自2025年10月12日起开始计算）</div>
-            <div class="version-log" id="versionLog">版本更新日志</div>
+        <div class="footer-links">
+            <a href="https://ccw.site/s/233J3" target="_blank">慕然科技的共创主页↗</a>
+            <a href="https://ccw.site/s/bL4gnr" target="_blank">Morgan的共创主页↗</a>
         </div>
+        <p class="copyright">© 2025 慕然科技CCWMORAN. 保留所有权利.</p>
+        <p class="copyright">该网页已被访问 <img src="https://w.saobby.com/w/cbudl97s"> 次（自2025年10月12日起开始计算）</p>
+        <p class="copyright" style="margin-top: 10px; cursor: pointer;" id="versionLog">版本更新日志</p>
     </footer>
-    
-    <!-- 液态玻璃弹窗 -->
+
+    <!-- 版本更新日志模态框 -->
     <div class="modal-overlay" id="versionModal">
         <div class="modal">
-            <div class="modal-close" id="modalClose">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
-                </svg>
-            </div>
             <h3 class="modal-title">版本更新日志</h3>
             <div class="modal-content">
                 <p><strong>版本号：5.2</strong></p>
@@ -969,251 +719,198 @@
                 <p>3. 改进内容排版，增强可读性</p>
                 <p>4. 调整色彩对比度，优化用户体验</p>
             </div>
+            <div class="modal-buttons">
+                <button class="btn" onclick="closeModal('versionModal')">关闭</button>
+            </div>
         </div>
     </div>
-    
-    <!-- 跳转确认弹窗 -->
+
+    <!-- 跳转确认模态框 -->
     <div class="modal-overlay" id="redirectModal">
         <div class="modal">
-            <div class="modal-close" id="redirectModalClose">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
-                </svg>
-            </div>
             <h3 class="modal-title">跳转确认</h3>
             <div class="modal-content">
                 <p>即将跳转至外部网站：</p>
                 <p id="redirectTarget"></p>
                 <p>请注意，该链接将引导您离开当前页面。</p>
             </div>
-            <div class="service-buttons" style="margin-top: 24px;">
-                <button class="service-btn encode-btn" id="redirectConfirm">继续跳转</button>
-                <button class="service-btn decode-btn" id="redirectCancel">取消</button>
+            <div class="modal-buttons">
+                <button class="btn" id="redirectConfirm">继续跳转</button>
+                <button class="btn btn-secondary" id="redirectCancel">取消</button>
             </div>
         </div>
     </div>
-    
+
+    <!-- 复制通知 -->
     <div class="copy-notification" id="copyNotification">已复制到剪贴板</div>
-    
+
     <script>
+        // 页面切换功能
         document.addEventListener('DOMContentLoaded', function() {
-            // 页面切换
-            const navItems = document.querySelectorAll('.nav-item');
+            const navLinks = document.querySelectorAll('.nav-link');
             const pages = document.querySelectorAll('.page');
-            navItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    // 更新导航激活状态
-                    navItems.forEach(i => i.classList.remove('active'));
-                    this.classList.add('active');
-                    // 隐藏所有页面
-                    pages.forEach(page => {
-                        page.style.display = 'none';
-                        page.classList.remove('active');
-                    });
-                    // 显示选中的页面
-                    const pageId = this.getAttribute('data-page');
-                    const targetPage = document.getElementById(pageId);
-                    targetPage.style.display = 'block';
-                    // 添加过渡效果
-                    setTimeout(() => {
-                        targetPage.classList.add('active');
-                    }, 10);
+            
+            // 初始显示首页
+            showPage('home');
+            
+            // 导航链接点击事件
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetPage = this.getAttribute('href').substring(1);
                     
-                    // 滚动到页面顶部
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    // 更新导航激活状态
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 显示目标页面
+                    showPage(targetPage);
                 });
             });
             
-            // 悬浮导航栏效果
-            const nav = document.querySelector('.sticky-nav');
-            let lastScrollTop = 0;
-            window.addEventListener('scroll', function() {
-                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                if (scrollTop > 20) {
-                    nav.classList.add('scrolled');
-                } else {
-                    nav.classList.remove('scrolled');
+            function showPage(pageId) {
+                // 隐藏所有页面
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // 显示目标页面
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                    
+                    // 添加淡入动画
+                    const fadeElements = targetPage.querySelectorAll('.fade-in');
+                    fadeElements.forEach((el, index) => {
+                        setTimeout(() => {
+                            el.style.opacity = '0';
+                            el.style.transform = 'translateY(20px)';
+                            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                            
+                            setTimeout(() => {
+                                el.style.opacity = '1';
+                                el.style.transform = 'translateY(0)';
+                            }, 50);
+                        }, index * 100);
+                    });
                 }
-                lastScrollTop = scrollTop;
+                
+                // 滚动到顶部
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            // Base64 工具功能
+            const inputText = document.getElementById('inputText');
+            const resultText = document.getElementById('resultText');
+            const encodeBtn = document.getElementById('encodeBtn');
+            const decodeBtn = document.getElementById('decodeBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const copyNotification = document.getElementById('copyNotification');
+            
+            encodeBtn.addEventListener('click', function() {
+                if (inputText.value.trim() === '') {
+                    alert('请输入需要编码的内容');
+                    return;
+                }
+                
+                try {
+                    const encoded = btoa(unescape(encodeURIComponent(inputText.value)));
+                    resultText.value = encoded;
+                    copyBtn.style.display = 'block';
+                } catch (e) {
+                    alert('编码失败：无效字符');
+                }
             });
             
-            // 版本更新日志弹窗
+            decodeBtn.addEventListener('click', function() {
+                if (inputText.value.trim() === '') {
+                    alert('请输入需要解码的Base64字符串');
+                    return;
+                }
+                
+                try {
+                    const decoded = decodeURIComponent(escape(atob(inputText.value)));
+                    resultText.value = decoded;
+                    copyBtn.style.display = 'block';
+                } catch (e) {
+                    alert('解码失败：无效的Base64字符串');
+                }
+            });
+            
+            copyBtn.addEventListener('click', function() {
+                if (resultText.value.trim() === '') {
+                    alert('没有可复制的内容');
+                    return;
+                }
+                
+                resultText.select();
+                document.execCommand('copy');
+                
+                // 显示复制通知
+                copyNotification.classList.add('show');
+                setTimeout(() => {
+                    copyNotification.classList.remove('show');
+                }, 2000);
+            });
+            
+            // 版本更新日志
             const versionLog = document.getElementById('versionLog');
             const versionModal = document.getElementById('versionModal');
-            const modalClose = document.getElementById('modalClose');
+            
             versionLog.addEventListener('click', function() {
                 versionModal.classList.add('active');
-                setTimeout(() => {
-                    versionModal.querySelector('.modal').classList.add('active');
-                }, 10);
-            });
-            function closeModal() {
-                versionModal.querySelector('.modal').classList.remove('active');
-                setTimeout(() => {
-                    versionModal.classList.remove('active');
-                }, 300);
-            }
-            modalClose.addEventListener('click', closeModal);
-            versionModal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeModal();
-                }
             });
             
-            // 跳转确认弹窗
+            // 跳转确认功能
             const redirectModal = document.getElementById('redirectModal');
-            const redirectModalClose = document.getElementById('redirectModalClose');
             const redirectTarget = document.getElementById('redirectTarget');
             const redirectConfirm = document.getElementById('redirectConfirm');
             const redirectCancel = document.getElementById('redirectCancel');
             let pendingRedirectUrl = null;
             
-            function closeRedirectModal() {
-                redirectModal.querySelector('.modal').classList.remove('active');
-                setTimeout(() => {
-                    redirectModal.classList.remove('active');
-                }, 300);
-                pendingRedirectUrl = null;
-            }
+            window.confirmRedirect = function(url) {
+                redirectTarget.textContent = url.length > 50 ? url.substring(0, 50) + '...' : url;
+                pendingRedirectUrl = url;
+                redirectModal.classList.add('active');
+            };
             
-            redirectModalClose.addEventListener('click', closeRedirectModal);
-            redirectCancel.addEventListener('click', closeRedirectModal);
             redirectConfirm.addEventListener('click', function() {
                 if (pendingRedirectUrl) {
                     window.open(pendingRedirectUrl, '_blank');
                 }
-                closeRedirectModal();
-            });
-            redirectModal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeRedirectModal();
-                }
+                redirectModal.classList.remove('active');
+                pendingRedirectUrl = null;
             });
             
-            // 为所有外部链接添加跳转确认
-            const externalLinks = document.querySelectorAll('.external-link, .footer-link');
-            externalLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    if (this.href && this.href !== '#') {
-                        e.preventDefault();
-                        // 获取链接文本（去掉箭头符号）
-                        let linkText = this.textContent.replace('↗', '').trim();
-                        if (linkText === '' || linkText === '前往教程' || linkText === '访问代码库') {
-                            // 使用href属性
-                            linkText = this.href;
+            redirectCancel.addEventListener('click', function() {
+                redirectModal.classList.remove('active');
+                pendingRedirectUrl = null;
+            });
+            
+            // 关闭模态框函数
+            window.closeModal = function(modalId) {
+                document.getElementById(modalId).classList.remove('active');
+            };
+            
+            // 点击模态框外部关闭
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                        if (this.id === 'redirectModal') {
+                            pendingRedirectUrl = null;
                         }
-                        redirectTarget.textContent = linkText.length > 50 ? linkText.substring(0, 50) + '...' : linkText;
-                        pendingRedirectUrl = this.href;
-                        redirectModal.classList.add('active');
-                        setTimeout(() => {
-                            redirectModal.querySelector('.modal').classList.add('active');
-                        }, 10);
                     }
                 });
             });
             
-            // Base64 服务功能
-            const inputText = document.getElementById('inputText');
-            const encodeBtn = document.getElementById('encodeBtn');
-            const decodeBtn = document.getElementById('decodeBtn');
-            const copyNotification = document.getElementById('copyNotification');
-            
-            // 编码功能
-            encodeBtn.addEventListener('click', function() {
-                const text = inputText.value;
-                if (text) {
-                    try {
-                        const encoded = btoa(unescape(encodeURIComponent(text)));
-                        // 显示通知
-                        copyNotification.textContent = "编码结果已复制到剪贴板";
-                        copyNotification.classList.add('show');
-                        setTimeout(() => {
-                            copyNotification.classList.remove('show');
-                        }, 3000);
-                        navigator.clipboard.writeText(encoded);
-                    } catch (e) {
-                        alert('编码失败：无效字符');
-                    }
-                } else {
-                    alert('请输入需要编码的内容');
-                }
-            });
-            
-            // 解码功能
-            decodeBtn.addEventListener('click', function() {
-                const text = inputText.value;
-                if (text) {
-                    try {
-                        const decoded = decodeURIComponent(escape(atob(text)));
-                        // 显示通知
-                        copyNotification.textContent = "解码结果已复制到剪贴板";
-                        copyNotification.classList.add('show');
-                        setTimeout(() => {
-                            copyNotification.classList.remove('show');
-                        }, 3000);
-                        navigator.clipboard.writeText(decoded);
-                    } catch (e) {
-                        alert('解码失败：无效的Base64字符串');
-                    }
-                } else {
-                    alert('请输入需要解码的Base64字符串');
-                }
-            });
-            
-            // 随机表情符号
-            const randomEmoji = document.getElementById('randomEmoji');
-            const welcomeEmojis = ['🤣', '😍', '🥰', '🥳', '🤩', '😎', '😋', '🙌', '🫶', '👍', '✌', '🤓', '🤟', '🤙', '🎊', '🎉', '🪄', '🎁', '🎈'];
-            const randomIndex = Math.floor(Math.random() * welcomeEmojis.length);
-            randomEmoji.textContent = welcomeEmojis[randomIndex];
-            randomEmoji.style.fontSize = '1.5rem';
-            randomEmoji.style.marginLeft = '8px';
-            randomEmoji.style.display = 'inline-block';
-            
-            // 动态生成随机渐变背景
-            function generateRandomGradient() {
-                const colors = ['#ffffff', '#a5d296', '#5ac05c'];
-                const gradientTypes = ['linear-gradient', 'radial-gradient'];
-                const gradientType = gradientTypes[Math.floor(Math.random() * gradientTypes.length)];
-                
-                let gradientString;
-                if (gradientType === 'linear-gradient') {
-                    const angle = Math.floor(Math.random() * 360);
-                    const color1 = colors[Math.floor(Math.random() * colors.length)];
-                    const color2 = colors[Math.floor(Math.random() * colors.length)];
-                    const color3 = colors[Math.floor(Math.random() * colors.length)];
-                    gradientString = `${gradientType}(${angle}deg, ${color1} 0%, ${color2} 50%, ${color3} 100%)`;
-                } else {
-                    const shape = Math.random() > 0.5 ? 'circle' : 'ellipse';
-                    const color1 = colors[Math.floor(Math.random() * colors.length)];
-                    const color2 = colors[Math.floor(Math.random() * colors.length)];
-                    gradientString = `${gradientType}(${shape} at ${Math.floor(Math.random() * 100)}% ${Math.floor(Math.random() * 100)}%, ${color1} 0%, ${color2} 100%)`;
-                }
-                
-                return gradientString;
-            }
-            
-            // 应用随机渐变背景
-            const dynamicBackground = document.querySelector('.dynamic-background');
-            if (dynamicBackground) {
-                // 随机调整渐变斑点的位置和大小
-                const blobs = document.querySelectorAll('.gradient-blob');
-                blobs.forEach(blob => {
-                    const size = Math.floor(Math.random() * 200) + 150;
-                    blob.style.width = `${size}px`;
-                    blob.style.height = `${size}px`;
-                    blob.style.top = `${Math.floor(Math.random() * 80)}%`;
-                    blob.style.left = `${Math.floor(Math.random() * 80)}%`;
-                    
-                    // 随机动画持续时间
-                    const duration = Math.floor(Math.random() * 20) + 20;
-                    blob.style.animationDuration = `${duration}s`;
+            // 外部链接点击事件
+            document.querySelectorAll('a[target="_blank"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    confirmRedirect(this.href);
                 });
-            }
-            
-            // 初始页面显示
-            setTimeout(() => {
-                document.querySelector('.page.active').classList.add('active');
-            }, 10);
+            });
         });
     </script>
 </body>
