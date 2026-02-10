@@ -601,7 +601,7 @@
         </div>
     </nav>
 
-    <!-- 主内容区域 -->
+    <!-- 内容 -->
     <div class="main-content">
         <!-- 首页 -->
         <section id="home" class="page active">
@@ -728,7 +728,7 @@
                             <i class="fab fa-github"></i>
                         </div>
                         <h3>GitHub 账号</h3>
-                        <p>账号名称：ccwmoran</p>
+                        <p>账号ID：ccwmoran</p>
                     </div>
                     
                     <div class="contact-item fade-in">
@@ -754,23 +754,23 @@
                             <a href="https://ccw.site/" class="mysxl-link" target="_blank">去看看↗</a>
                         </div>
                         <div class="friend-link-item">
-                            <h3>友链空位</h3>
-                            <p>这是一个示例友情链接</p>
-                            <a href="#" class="mysxl-link" target="_blank">去看看↗</a>
+                            <h3>友链空位1</h3>
+                            <p>快去申请吧！</p>
+                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
                         </div>
                         <div class="friend-link-item">
-                            <h3>友链空位</h3>
-                            <p>这是一个示例友情链接</p>
-                            <a href="#" class="mysxl-link" target="_blank">去看看↗</a>
+                            <h3>友链空位2</h3>
+                            <p>快去申请吧！</p>
+                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
                         </div>
                         <div class="friend-link-item">
-                            <h3>示例链接3</h3>
-                            <p>这是一个示例友情链接</p>
-                            <a href="#" class="mysxl-link" target="_blank">去看看↗</a>
+                            <h3>友链空位3</h3>
+                            <p>快去申请吧！</p>
+                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
                         </div>
                         <div class="friend-link-item">
-                            <h3>申请链接</h3>
-                            <p>申请友情链接</p>
+                            <h3>友链空位4</h3>
+                            <p>快去申请吧！</p>
                             <a href="https://ccwmoran.mysxl.cn/" class="mysxl-link" target="_blank">去申请↗</a>
                         </div>
                     </div>
@@ -804,7 +804,7 @@
         </section>
     </div>
 
-    <!-- 重新整理的页脚 -->
+    <!-- 页脚 -->
     <footer>
         <div class="footer-content">
             <div class="footer-links">
@@ -827,7 +827,7 @@
         </div>
     </footer>
 
-    <!-- 加入我们模态框 -->
+    <!-- 加入我们的弹窗 -->
     <div class="modal-overlay" id="versionModal">
         <div class="modal">
             <h3 class="modal-title">加入我们或与我们合作</h3>
@@ -842,7 +842,7 @@
         </div>
     </div>
 
-    <!-- 跳转确认模态框 -->
+    <!-- 确认跳转弹窗 -->
     <div class="modal-overlay" id="redirectModal">
         <div class="modal">
             <h3 class="modal-title">跳转确认</h3>
@@ -896,7 +896,7 @@
                 if (targetPage) {
                     targetPage.classList.add('active');
                     
-                    // 添加淡入动画
+                    // 淡入动画
                     const fadeElements = targetPage.querySelectorAll('.fade-in');
                     fadeElements.forEach((el, index) => {
                         setTimeout(() => {
@@ -1004,12 +1004,12 @@
                 pendingRedirectUrl = null;
             });
             
-            // 关闭模态框函数
+            // 关闭弹窗函数
             window.closeModal = function(modalId) {
                 document.getElementById(modalId).classList.remove('active');
             };
             
-            // 点击模态框外部关闭
+            // 点击弹窗外部关闭
             document.querySelectorAll('.modal-overlay').forEach(modal => {
                 modal.addEventListener('click', function(e) {
                     if (e.target === this) {
