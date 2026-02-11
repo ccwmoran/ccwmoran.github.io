@@ -32,63 +32,6 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
         }
         
-        /* 移动端提示样式 */
-        .mobile-notice {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            z-index: 9999;
-            text-align: center;
-            padding: 40px 20px;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .mobile-notice.active {
-            display: flex;
-        }
-        
-        .mobile-icon {
-            font-size: 4rem;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-        }
-        
-        .mobile-title {
-            font-size: 2rem;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-        }
-        
-        .mobile-text {
-            font-size: 1.1rem;
-            color: var(--light-text);
-            max-width: 500px;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-        
-        .mobile-link {
-            display: inline-block;
-            padding: 15px 30px;
-            background: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: background 0.3s;
-        }
-        
-        .mobile-link:hover {
-            background: var(--secondary-color);
-        }
-        
         /* 导航栏样式 */
         .navbar {
             position: fixed;
@@ -170,6 +113,71 @@
             width: 100%;
             height: 2px;
             background-color: var(--secondary-color);
+        }
+        
+        /* 移动端菜单按钮 */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        /* 移动端菜单样式 */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: var(--card-bg);
+            backdrop-filter: var(--glass-effect);
+            -webkit-backdrop-filter: var(--glass-effect);
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transform-origin: top;
+            transform: scaleY(0);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+            transform: scaleY(1);
+            opacity: 1;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            padding: 20px;
+        }
+        
+        .mobile-menu li {
+            margin-bottom: 15px;
+        }
+        
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: color 0.3s;
+        }
+        
+        .mobile-menu a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .mobile-menu a.active {
+            color: var(--secondary-color);
         }
         
         /* 主内容区域 */
@@ -516,7 +524,7 @@
             color: var(--primary-color);
         }
         
-        /* 响应式设计 */
+        /* 响应式设计 - 修改为768px以下显示移动端菜单 */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -540,6 +548,11 @@
             
             .friend-links-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            /* 调整工具按钮在移动端的布局 */
+            .tool-buttons {
+                flex-direction: column;
             }
         }
         
@@ -637,45 +650,8 @@
             animation: fadeIn 0.3s ease;
         }
     </style>
-    
-    <!-- 设备检测脚本 -->
-    <script>
-        // 检测是否为移动设备
-        function isMobileDevice() {
-            // 通过用户代理和屏幕宽度判断
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-            const isSmallScreen = window.innerWidth <= 768;
-            
-            return isMobile || isSmallScreen;
-        }
-        
-        // 页面加载时检测设备
-        window.addEventListener('DOMContentLoaded', function() {
-            if (isMobileDevice()) {
-                // 显示移动端提示
-                document.getElementById('mobileNotice').classList.add('active');
-                // 隐藏主内容
-                document.querySelector('.main-content').style.display = 'none';
-                document.querySelector('footer').style.display = 'none';
-            }
-        });
-    </script>
 </head>
 <body>
-    <!-- 移动端提示 -->
-    <div class="mobile-notice" id="mobileNotice">
-        <div class="mobile-icon">
-            <i class="fas fa-mobile-alt"></i>
-        </div>
-        <h2 class="mobile-title">移动端访问提示</h2>
-        <p class="mobile-text">检测到您正在使用移动设备访问，为了获得更好的浏览体验，建议您访问我们的移动端页面。</p>
-        <a href="https://ccwmoran.github.io/mobile" class="mobile-link">前往移动端页面</a>
-        <p class="mobile-text" style="margin-top: 30px; font-size: 0.9rem;">
-            如果您希望继续访问桌面版页面，请确保您的设备屏幕宽度足够。
-        </p>
-    </div>
-    
     <!-- 导航栏 -->
     <nav class="navbar">
         <div class="nav-container">
@@ -685,6 +661,8 @@
                 </div>
                 <span>慕然科技</span>
             </div>
+            
+            <!-- 桌面端导航菜单 -->
             <ul class="nav-links">
                 <li><a href="#home" class="nav-link active">首页</a></li>
                 <li><a href="#works" class="nav-link">精选</a></li>
@@ -692,8 +670,24 @@
                 <li><a href="#contact" class="nav-link">联系方式</a></li>
                 <li><a href="#about" class="nav-link">关于我们</a></li>
             </ul>
+            
+            <!-- 移动端菜单按钮 -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
+    
+    <!-- 移动端折叠菜单 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#home" class="mobile-nav-link active">首页</a></li>
+            <li><a href="#works" class="mobile-nav-link">精选</a></li>
+            <li><a href="#tools" class="mobile-nav-link">工具</a></li>
+            <li><a href="#contact" class="mobile-nav-link">联系方式</a></li>
+            <li><a href="#about" class="mobile-nav-link">关于我们</a></li>
+        </ul>
+    </div>
 
     <!-- 内容 -->
     <div class="main-content">
@@ -959,12 +953,15 @@
         // 页面切换功能
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('.nav-link');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
             const pages = document.querySelectorAll('.page');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
             
             // 初始显示首页
             showPage('home');
             
-            // 导航链接点击事件
+            // 导航链接点击事件 - 桌面端
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -974,10 +971,89 @@
                     navLinks.forEach(nav => nav.classList.remove('active'));
                     this.classList.add('active');
                     
+                    // 同步移动端菜单激活状态
+                    updateMobileNavActive(targetPage);
+                    
                     // 显示目标页面
                     showPage(targetPage);
                 });
             });
+            
+            // 导航链接点击事件 - 移动端
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetPage = this.getAttribute('href').substring(1);
+                    
+                    // 更新移动端导航激活状态
+                    mobileNavLinks.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 同步桌面端菜单激活状态
+                    updateDesktopNavActive(targetPage);
+                    
+                    // 显示目标页面
+                    showPage(targetPage);
+                    
+                    // 关闭移动端菜单
+                    mobileMenu.classList.remove('active');
+                });
+            });
+            
+            // 移动端菜单按钮点击事件
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                
+                // 切换菜单图标
+                const icon = this.querySelector('i');
+                if (mobileMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // 点击页面其他区域关闭移动端菜单
+            document.addEventListener('click', function(e) {
+                if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target) && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // 窗口大小变化时重置菜单
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    mobileMenu.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // 更新移动端导航激活状态
+            function updateMobileNavActive(pageId) {
+                mobileNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${pageId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            // 更新桌面端导航激活状态
+            function updateDesktopNavActive(pageId) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${pageId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
             
             function showPage(pageId) {
                 // 隐藏所有页面
