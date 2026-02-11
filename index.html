@@ -32,6 +32,63 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
         }
         
+        /* 移动端提示样式 */
+        .mobile-notice {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+            text-align: center;
+            padding: 40px 20px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .mobile-notice.active {
+            display: flex;
+        }
+        
+        .mobile-icon {
+            font-size: 4rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .mobile-title {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .mobile-text {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            max-width: 500px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .mobile-link {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .mobile-link:hover {
+            background: var(--secondary-color);
+        }
+        
         /* 导航栏样式 */
         .navbar {
             position: fixed;
@@ -580,8 +637,45 @@
             animation: fadeIn 0.3s ease;
         }
     </style>
+    
+    <!-- 设备检测脚本 -->
+    <script>
+        // 检测是否为移动设备
+        function isMobileDevice() {
+            // 通过用户代理和屏幕宽度判断
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+            const isSmallScreen = window.innerWidth <= 768;
+            
+            return isMobile || isSmallScreen;
+        }
+        
+        // 页面加载时检测设备
+        window.addEventListener('DOMContentLoaded', function() {
+            if (isMobileDevice()) {
+                // 显示移动端提示
+                document.getElementById('mobileNotice').classList.add('active');
+                // 隐藏主内容
+                document.querySelector('.main-content').style.display = 'none';
+                document.querySelector('footer').style.display = 'none';
+            }
+        });
+    </script>
 </head>
 <body>
+    <!-- 移动端提示 -->
+    <div class="mobile-notice" id="mobileNotice">
+        <div class="mobile-icon">
+            <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h2 class="mobile-title">移动端访问提示</h2>
+        <p class="mobile-text">检测到您正在使用移动设备访问，为了获得更好的浏览体验，建议您访问我们的移动端页面。</p>
+        <a href="https://ccwmoran.github.io/mobile" class="mobile-link">前往移动端页面</a>
+        <p class="mobile-text" style="margin-top: 30px; font-size: 0.9rem;">
+            如果您希望继续访问桌面版页面，请确保您的设备屏幕宽度足够。
+        </p>
+    </div>
+    
     <!-- 导航栏 -->
     <nav class="navbar">
         <div class="nav-container">
