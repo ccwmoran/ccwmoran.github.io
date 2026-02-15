@@ -29,7 +29,7 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            font-family: "SimSun", "宋体", "Songti SC", "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
         }
         
         /* 导航栏样式 */
@@ -230,12 +230,10 @@
         
         /* 其他页面的卡片保留悬停效果 */
         .card:not(#home .card) {
-            transition: transform 0.3s ease;
+            /* transition: transform 0.3s ease; 去除浮动效果 */
         }
         
-        .card:not(#home .card):hover {
-            transform: translateY(-5px);
-        }
+        /* 卡片悬停效果已全局移除 */
         
         .card-title {
             font-size: 1.4rem;
@@ -295,8 +293,8 @@
         }
         
         .work-item:hover {
-            transform: translateY(-5px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            /* transform 已移除 */
         }
         
         .work-item h3 {
@@ -379,8 +377,8 @@
         }
         
         .friend-link-item:hover {
-            transform: translateY(-5px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            /* transform 已移除 */
         }
         
         .friend-link-item h3 {
@@ -859,7 +857,37 @@
                         <div class="friend-link-item">
                             <h3>友链空位4</h3>
                             <p>快去申请吧！</p>
-                            <a href="https://ccwmoran.mysxl.cn/" class="mysxl-link" target="_blank">去申请↗</a>
+                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
+                        </div>
+                        <div class="friend-link-item">
+                            <h3>友链空位5</h3>
+                            <p>快去申请吧！</p>
+                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
+                        </div>
+                        <div class="friend-link-item">
+                            <h3>友链空位6</h3>
+                            <p>快去申请吧！</p>
+                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
+                        </div>
+                        <div class="friend-link-item">
+                            <h3>友链空位7</h3>
+                            <p>快去申请吧！</p>
+                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
+                        </div>
+                        <div class="friend-link-item">
+                            <h3>友链空位8</h3>
+                            <p>快去申请吧！</p>
+                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
+                        </div>
+                        <div class="friend-link-item">
+                            <h3>友链空位9</h3>
+                            <p>快去申请吧！</p>
+                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
+                        </div>
+                        <div class="friend-link-item">
+                            <h3>友链空位10</h3>
+                            <p>快去申请吧！</p>
+                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
                         </div>
                     </div>
                 </div>
