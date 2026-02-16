@@ -2,655 +2,548 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCWMORAN慕然科技</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>慕然科技 · DeepSeek风格</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ----- 全局变量 (主题色不变) ----- */
         :root {
-            --primary-color: #a5d296;
-            --secondary-color: #5ca05c;
-            --background-color: #ffffff;
-            --text-color: #333333;
-            --light-text: #666666;
-            --card-bg: rgba(255, 255, 255, 0.7);
-            --glass-effect: blur(10px);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --primary-color: #a5d296;      /* 浅绿 */
+            --secondary-color: #5ca05c;    /* 深绿 */
+            --bg-color: #ffffff;
+            --text-primary: #1f2a3a;
+            --text-secondary: #5f6b7a;
+            --border-light: #e9edf2;
+            --sidebar-bg: #f9fafc;
+            --card-bg: #ffffff;
+            --banner-bg: #f0f7fe;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.02);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.04);
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
         }
-        
+
         body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-family);
+            line-height: 1.5;
             overflow-x: hidden;
-            font-family: "SimSun", "宋体", "Songti SC", "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
         }
-        
-        /* 导航栏样式 */
+
+        /* ----- 导航栏 (顶栏) 仿DeepSeek简洁风格 ----- */
         .navbar {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            background: var(--card-bg);
-            backdrop-filter: var(--glass-effect);
-            -webkit-backdrop-filter: var(--glass-effect);
-            box-shadow: var(--shadow);
+            height: 64px;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-light);
             z-index: 1000;
-            padding: 15px 0;
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
         }
-        
+
         .nav-container {
-            max-width: 1200px;
+            width: 100%;
+            max-width: 1600px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
         }
-        
+
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--secondary-color);
             display: flex;
             align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--secondary-color);
         }
-        
+
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 10px;
+            width: 36px;
+            height: 36px;
+            /* 移除圆形边框，背景色也去掉，图片完整显示 */
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
         }
-        
         .logo-icon img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: contain;  /* 保证图片完整缩放，不留白 */
         }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-        
-        .nav-links a:hover {
-            color: var(--secondary-color);
-        }
-        
-        .nav-links a.active {
-            color: var(--secondary-color);
-        }
-        
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--secondary-color);
-        }
-        
+
         /* 移动端菜单按钮 */
         .mobile-menu-btn {
             display: none;
-            background: none;
+            background: transparent;
             border: none;
-            font-size: 1.5rem;
-            color: var(--text-color);
+            font-size: 1.6rem;
+            color: var(--text-primary);
             cursor: pointer;
-            padding: 5px;
+            padding: 8px;
         }
-        
-        /* 移动端菜单样式 */
+
+        /* 移动端折叠菜单 (与原逻辑一致) */
         .mobile-menu {
             display: none;
             position: fixed;
-            top: 70px;
+            top: 64px;
             left: 0;
             width: 100%;
-            background: var(--card-bg);
-            backdrop-filter: var(--glass-effect);
-            -webkit-backdrop-filter: var(--glass-effect);
+            background: #ffffff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--border-light);
             z-index: 999;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            overflow: hidden;
             transform-origin: top;
             transform: scaleY(0);
             opacity: 0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            padding: 12px 0;
         }
-        
         .mobile-menu.active {
             display: block;
             transform: scaleY(1);
             opacity: 1;
         }
-        
         .mobile-menu ul {
             list-style: none;
-            padding: 20px;
+            padding: 0 24px;
         }
-        
         .mobile-menu li {
-            margin-bottom: 15px;
+            margin-bottom: 4px;
         }
-        
         .mobile-menu a {
+            display: block;
+            padding: 14px 16px;
             text-decoration: none;
-            color: var(--text-color);
-            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-size: 1rem;
             font-weight: 500;
-            display: block;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            transition: color 0.3s;
+            border-radius: var(--radius-sm);
+            transition: background 0.2s;
         }
-        
-        .mobile-menu a:hover {
-            color: var(--secondary-color);
-        }
-        
+        .mobile-menu a:hover,
         .mobile-menu a.active {
+            background: rgba(92, 160, 92, 0.08);
             color: var(--secondary-color);
         }
-        
-        /* 主内容区域 */
-        .main-content {
-            margin-top: 80px;
-            padding: 40px 20px;
+
+        /* ----- 左右布局 (仿DeepSeek控制台) ----- */
+        .layout {
+            display: flex;
+            margin-top: 64px;   /* 顶栏高度 */
+            min-height: calc(100vh - 64px);
         }
-        
-        .section {
-            max-width: 1200px;
-            margin: 0 auto 60px;
+
+        /* 左侧导航 (DeepSeek风格) */
+        .sidebar {
+            width: 260px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border-light);
+            padding: 24px 12px;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            bottom: 0;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e0 #f1f5f9;
         }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
+        .sidebar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .sidebar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 8px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+        .sidebar-menu li {
+            margin-bottom: 4px;
+        }
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            border-radius: var(--radius-sm);
+            transition: all 0.15s;
+            font-size: 0.95rem;
+        }
+        .sidebar-menu a i {
+            width: 22px;
+            font-size: 1.2rem;
+            color: #8a9aa8;
+        }
+        .sidebar-menu a:hover {
+            background: rgba(92, 160, 92, 0.06);
             color: var(--secondary-color);
-            position: relative;
         }
-        
-        .section-title::after {
-            content: '';
+        .sidebar-menu a.active {
+            background: rgba(92, 160, 92, 0.12);
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        .sidebar-menu a.active i {
+            color: var(--secondary-color);
+        }
+
+        /* 右侧主内容区 */
+        .main-panel {
+            flex: 1;
+            margin-left: 260px;   /* 与侧边栏同宽 */
+            padding: 24px 32px 40px;
+            background: #ffffff;
+            min-width: 0;  /* 防止flex溢出 */
+        }
+
+        /* 吸顶广告栏 (近期动态) — 仿DeepSeek提示条 */
+        .info-banner {
+            background: var(--banner-bg);
+            border: 1px solid #d9eaf5;
+            border-radius: var(--radius-md);
+            padding: 16px 24px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            color: #1a4c6e;
+            box-shadow: var(--shadow-sm);
+        }
+        .info-banner i {
+            font-size: 1.3rem;
+            color: #2d7fc1;
+        }
+        .info-banner a {
+            color: var(--secondary-color);
+            font-weight: 500;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .info-banner a:hover {
+            text-decoration: underline;
+        }
+
+        /* 页面容器 (多页切换) */
+        .page-container {
+            /* 所有page默认隐藏, active显示 */
+        }
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .page.active {
             display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--primary-color);
-            margin: 10px auto;
         }
-        
-        /* 卡片样式 - 移除首页公告栏的浮动效果 */
+
+        /* 卡片风格 (彻底去掉玻璃效果, 改为纯白干净卡片) */
         .card {
             background: var(--card-bg);
-            backdrop-filter: var(--glass-effect);
-            -webkit-backdrop-filter: var(--glass-effect);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: var(--shadow);
-            margin-bottom: 30px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 24px;
+            transition: box-shadow 0.2s;
         }
-        
-        /* 只有非首页的卡片保留悬停效果 */
-        #home .card {
-            transition: none;
+        .card:hover {
+            box-shadow: var(--shadow-md);
         }
-        
-        #home .card:hover {
-            transform: none;
-        }
-        
-        /* 其他页面的卡片保留悬停效果 */
-        .card:not(#home .card) {
-            /* transition: transform 0.3s ease; 去除浮动效果 */
-        }
-        
-        /* 卡片悬停效果已全局移除 */
-        
+
         .card-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--secondary-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            color: var(--text-primary);
             display: flex;
             align-items: center;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 12px;
         }
-        
-        .card-title::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 20px;
-            background: var(--primary-color);
-            border-radius: 3px;
+        .card-title i {
+            color: var(--secondary-color);
             margin-right: 10px;
+            font-size: 1.3rem;
         }
-        
-        /* 首页样式 */
+
+        /* 首页hero */
         .hero {
             text-align: center;
-            padding: 60px 0;
-            background: linear-gradient(135deg, rgba(165, 210, 150, 0.1) 0%, rgba(255, 255, 255, 0.5) 100%);
-            border-radius: 20px;
-            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: #fafcf8;
+            border-radius: var(--radius-md);
+            margin-bottom: 32px;
+            border: 1px solid var(--border-light);
         }
-        
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            font-size: 2.2rem;
             color: var(--secondary-color);
+            margin-bottom: 8px;
         }
-        
         .hero p {
-            font-size: 1.2rem;
-            color: var(--light-text);
-            max-width: 600px;
-            margin: 0 auto;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
         }
-        
-        /* 作品网格 */
+
+        /* 作品网格、工具网格等 (保留原结构) */
         .works-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 10px;
         }
-        
         .work-item {
             background: var(--card-bg);
-            backdrop-filter: var(--glass-effect);
-            -webkit-backdrop-filter: var(--glass-effect);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 22px;
+            transition: box-shadow 0.2s;
         }
-        
         .work-item:hover {
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-            /* transform 已移除 */
+            box-shadow: var(--shadow-md);
         }
-        
         .work-item h3 {
             font-size: 1.2rem;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
             color: var(--secondary-color);
         }
-        
         .work-list {
             list-style: none;
-            margin-top: 15px;
         }
-        
         .work-list li {
             padding: 8px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px dashed #f0f0f0;
             display: flex;
             align-items: center;
+            color: var(--text-secondary);
         }
-        
-        .work-list li:last-child {
-            border-bottom: none;
-        }
-        
         .work-list li::before {
             content: '•';
             color: var(--primary-color);
+            font-weight: bold;
             margin-right: 10px;
-            font-size: 1.2rem;
         }
-        
-        .note {
-            font-style: italic;
-            color: var(--light-text);
-            margin-top: 15px;
-            font-size: 0.9rem;
-        }
-        
-        /* 联系方式样式 - 修改友情链接布局 */
+
+        /* 联系方式网格 */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
         }
-        
         .contact-item {
             text-align: center;
-            padding: 20px;
+            padding: 24px 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
         }
-        
         .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            width: 56px;
+            height: 56px;
+            background: rgba(92, 160, 92, 0.1);
             border-radius: 50%;
-            margin: 0 auto 15px;
+            margin: 0 auto 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.5rem;
+            color: var(--secondary-color);
+            font-size: 1.6rem;
         }
-        
-        /* 友情链接网格布局 - 每行两个 */
+
+        /* 友情链接网格 (每行两个, 原设计) */
         .friend-links-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             margin-top: 20px;
         }
-        
         .friend-link-item {
             background: var(--card-bg);
-            backdrop-filter: var(--glass-effect);
-            -webkit-backdrop-filter: var(--glass-effect);
-            border-radius: 15px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
             padding: 20px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
         }
-        
-        .friend-link-item:hover {
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-            /* transform 已移除 */
-        }
-        
         .friend-link-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
             color: var(--secondary-color);
+            margin-bottom: 8px;
         }
-        
-        /* 关于我们样式 */
-        .about-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 30px;
-            justify-content: center;
+        .mysxl-link {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 6px 16px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
         }
-        
-        /* 工具样式 */
-        .tool-card {
-            text-align: center;
-        }
-        
+
+        /* 工具页文本区 */
         .tool-input {
             width: 100%;
-            padding: 15px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            margin-bottom: 20px;
-            font-size: 1rem;
+            padding: 14px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            margin-bottom: 18px;
             resize: vertical;
-            min-height: 120px;
         }
-        
         .tool-buttons {
             display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
-        
         .btn {
-            flex: 1;
-            padding: 12px 20px;
+            padding: 10px 22px;
             border: none;
-            border-radius: 10px;
+            border-radius: 30px;
             background: var(--primary-color);
             color: white;
             font-weight: 500;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.2s;
         }
-        
-        .btn:hover {
-            background: var(--secondary-color);
-        }
-        
         .btn-secondary {
-            background: rgba(0, 0, 0, 0.05);
-            color: var(--text-color);
+            background: #f0f2f5;
+            color: var(--text-primary);
         }
-        
         .btn-secondary:hover {
-            background: rgba(0, 0, 0, 0.1);
+            background: #e2e6ea;
         }
-        
-        /* mysxl链接按钮样式 */
-        .mysxl-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.3s;
-            margin-top: 10px;
-        }
-        
-        .mysxl-link:hover {
-            background: var(--secondary-color);
-        }
-        
-        /* 页脚样式 - 重新整理布局 */
-        footer {
-            background: rgba(0, 0, 0, 0.03);
-            padding: 40px 20px;
+
+        /* 页脚 (位于右侧面板内) */
+        .footer {
+            margin-top: 48px;
+            padding: 32px 0 16px;
+            border-top: 1px solid var(--border-light);
             text-align: center;
-            margin-top: 60px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
         .footer-links {
             display: flex;
             justify-content: center;
             gap: 30px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
-        
         .footer-links a {
-            color: var(--light-text);
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.3s;
         }
-        
         .footer-links a:hover {
             color: var(--secondary-color);
         }
-        
         .footer-divider {
-            width: 100%;
+            width: 100px;
             height: 1px;
-            background: rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
-            max-width: 400px;
+            background: var(--border-light);
+            margin: 18px auto;
         }
-        
-        .copyright {
-            color: var(--light-text);
-            font-size: 0.9rem;
-            margin: 10px 0;
-            line-height: 1.5;
+        .footer-stats img {
+            vertical-align: middle;
         }
-        
-        .footer-stats {
-            color: var(--light-text);
-            font-size: 0.85rem;
-            margin: 15px 0;
-            line-height: 1.5;
-        }
-        
-        .footer-join {
-            color: var(--secondary-color);
-            font-size: 0.9rem;
-            margin-top: 20px;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
-        .footer-join:hover {
-            color: var(--primary-color);
-        }
-        
-        /* 响应式设计 - 修改为768px以下显示移动端菜单 */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .works-grid, .contact-grid, .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .friend-links-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            /* 调整工具按钮在移动端的布局 */
-            .tool-buttons {
-                flex-direction: column;
-            }
-        }
-        
-        /* 动画效果 */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
-        
-        /* 隐藏所有页面，只显示当前活动页面 */
-        .page {
-            display: none;
-        }
-        
-        .page.active {
-            display: block;
-        }
-        
-        /* 模态框样式 */
+
+        /* 模态框 (保留原样式, 微调) */
         .modal-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 2000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
-        
         .modal-overlay.active {
             display: flex;
-            opacity: 1;
         }
-        
         .modal {
-            background: var(--card-bg);
-            backdrop-filter: var(--glass-effect);
-            -webkit-backdrop-filter: var(--glass-effect);
-            border-radius: 15px;
+            background: white;
+            border-radius: 20px;
             padding: 30px;
+            max-width: 400px;
             width: 90%;
-            max-width: 500px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            transform: scale(0.7);
-            opacity: 0;
-            transition: all 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
-        
-        .modal-overlay.active .modal {
-            transform: scale(1);
-            opacity: 1;
-        }
-        
         .modal-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.4rem;
             color: var(--secondary-color);
-            text-align: center;
-        }
-        
-        .modal-content {
             margin-bottom: 20px;
         }
-        
         .modal-buttons {
             display: flex;
             gap: 15px;
             justify-content: center;
+            margin-top: 24px;
         }
-        
+
         .copy-notification {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 20px; right: 20px;
             background: var(--secondary-color);
             color: white;
             padding: 12px 24px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 40px;
             display: none;
-            z-index: 2001;
         }
-        
         .copy-notification.show {
             display: block;
-            animation: fadeIn 0.3s ease;
+        }
+
+        /* 响应式: 移动端隐藏侧栏, 显示移动菜单按钮 */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .main-panel {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .friend-links-grid {
+                grid-template-columns: 1fr;
+            }
+            .tool-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(6px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
+
+    <!-- 顶栏 (logo圆形边框已移除) -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -659,24 +552,13 @@
                 </div>
                 <span>慕然科技</span>
             </div>
-            
-            <!-- 桌面端导航菜单 -->
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-link active">首页</a></li>
-                <li><a href="#works" class="nav-link">精选</a></li>
-                <li><a href="#tools" class="nav-link">工具</a></li>
-                <li><a href="#contact" class="nav-link">联系方式</a></li>
-                <li><a href="#about" class="nav-link">关于我们</a></li>
-            </ul>
-            
-            <!-- 移动端菜单按钮 -->
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
-    
-    <!-- 移动端折叠菜单 -->
+
+    <!-- 移动端折叠菜单 (保留原功能) -->
     <div class="mobile-menu" id="mobileMenu">
         <ul>
             <li><a href="#home" class="mobile-nav-link active">首页</a></li>
@@ -687,353 +569,241 @@
         </ul>
     </div>
 
-    <!-- 内容 -->
-    <div class="main-content">
-        <!-- 首页 -->
-        <section id="home" class="page active">
-            <div class="hero fade-in">
-                <h1>慕然科技 CCWMORAN</h1>
-                <p>愿你在峥嵘长青的世界里热忱不息</p>
-            </div>
-            
-            <div class="section">
-                <div class="card">
-                    <h2 class="card-title">官方公告</h2>
-                    <p>新春快乐，马年吉祥(˶╹ꇴ╹˶)🧨</p>
-                </div>
-                
-                <div class="card">
-                    <h2 class="card-title">近期动态</h2>
-                    <p>慕然Agent测试版上线啦！快去试试吧↓<br>https://ccwmoran.github.io/agent/</p>
-                </div>
-            </div>
-        </section>
+    <!-- 左右布局开始 -->
+    <div class="layout">
+        <!-- 左侧导航 (DeepSeek风格) -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="#home" class="sidebar-link active"><i class="fas fa-home"></i>首页</a></li>
+                <li><a href="#works" class="sidebar-link"><i class="fas fa-star"></i>精选</a></li>
+                <li><a href="#tools" class="sidebar-link"><i class="fas fa-tools"></i>工具</a></li>
+                <li><a href="#contact" class="sidebar-link"><i class="fas fa-address-book"></i>联系方式</a></li>
+                <li><a href="#about" class="sidebar-link"><i class="fas fa-info-circle"></i>关于我们</a></li>
+            </ul>
+        </aside>
 
-        <!-- 精选作品 -->
-        <section id="works" class="page">
-            <div class="section">
-                <h2 class="section-title">慕然科技的精选内容</h2>
-                
-                <div class="works-grid">
-                    <div class="work-item fade-in">
-                        <h3>Scratch作品</h3>
-                        <ul class="work-list">
-                            <li>缤纷绘画</li>
-                            <li>Copilot 模拟</li>
-                            <li>共创 AI</li>
-                            <li>Windows 模拟</li>
-                        </ul>
-                        <p class="note">请前往共创世界慕然科技的主页试玩作品</p>
-                    </div>
-                    
-                    <div class="work-item fade-in">
-                        <h3>文章</h3>
-                        <ul class="work-list">
-                            <li>没用的教程</li>
-                            <li>无聊的科普</li>
-                            <li>小众的神应用分享</li>
-                        </ul>
-                        <p class="note">请前往共创世界Morgan的主页"文章"页面浏览</p>
-                    </div>
-                    
-                    <div class="work-item fade-in">
-                        <h3>积木扩展</h3>
-                        <ul class="work-list">
-                            <li>各种交互弹窗</li>
-                            <li>文件在线预览</li>
-                            <li>在线播放音乐</li>
-                            <li>文件下载</li>
-                            <li>网页跳转</li>
-                            <li>发送系统消息</li>
-                            <li>Morgan的工具箱</li>
-                        </ul>
-                        <p class="note">请在共创世界素材集市搜索"慕然科技"或"Morgan"。<br>也可访问"工具"页的扩展库</p>
-                    </div>
-                </div>
+        <!-- 右侧主面板 -->
+        <div class="main-panel">
+            <!-- 吸顶广告: 近期动态 (移至此处) -->
+            <div class="info-banner">
+                <i class="fas fa-bullhorn"></i>
+                <span><strong>近期动态：</strong>慕然Agent测试版上线啦！快去试试吧↓ <a href="https://ccwmoran.github.io/agent/" target="_blank">https://ccwmoran.github.io/agent/</a></span>
             </div>
-        </section>
 
-        <!-- 实用工具 -->
-        <section id="tools" class="page">
-            <div class="section">
-                <h2 class="section-title">实用工具</h2>
-                
-                <div class="card tool-card fade-in">
-                    <h2 class="card-title">Base64 编码与解码</h2>
-                    <textarea class="tool-input" id="inputText" placeholder="请输入需要编码或解码的内容..."></textarea>
-                    <div class="tool-buttons">
-                        <button class="btn" id="encodeBtn">编码为 Base64</button>
-                        <button class="btn btn-secondary" id="decodeBtn">解码 Base64</button>
+            <!-- 页面容器 (所有page) -->
+            <div class="page-container">
+                <!-- 首页 -->
+                <section id="home" class="page active">
+                    <div class="hero fade-in">
+                        <h1>慕然科技 CCWMORAN</h1>
+                        <p>愿你在峥嵘长青的世界里热忱不息</p>
                     </div>
-                    <div class="result-container">
+                    <div class="card">
+                        <h2 class="card-title"><i class="fas fa-bullhorn"></i>官方公告</h2>
+                        <p>新春快乐，马年吉祥(˶╹ꇴ╹˶)🧨</p>
+                    </div>
+                    <!-- 原来的近期动态卡片改为活动通知 -->
+                    <div class="card">
+                        <h2 class="card-title"><i class="fas fa-calendar-alt"></i>活动通知</h2>
+                        <p>暂无活动</p>
+                    </div>
+                </section>
+
+                <!-- 精选作品 -->
+                <section id="works" class="page">
+                    <h2 class="card-title" style="border-bottom: none; padding-bottom: 0;"><i class="fas fa-star"></i>慕然科技的精选内容</h2>
+                    <div class="works-grid">
+                        <div class="work-item">
+                            <h3>Scratch作品</h3>
+                            <ul class="work-list"><li>缤纷绘画</li><li>Copilot 模拟</li><li>共创 AI</li><li>Windows 模拟</li></ul>
+                            <p class="note">请前往共创世界慕然科技的主页试玩作品</p>
+                        </div>
+                        <div class="work-item">
+                            <h3>文章</h3>
+                            <ul class="work-list"><li>没用的教程</li><li>无聊的科普</li><li>小众的神应用分享</li></ul>
+                            <p class="note">请前往共创世界Morgan的主页"文章"页面浏览</p>
+                        </div>
+                        <div class="work-item">
+                            <h3>积木扩展</h3>
+                            <ul class="work-list"><li>各种交互弹窗</li><li>文件在线预览</li><li>在线播放音乐</li><li>文件下载</li><li>网页跳转</li><li>发送系统消息</li><li>Morgan的工具箱</li></ul>
+                            <p class="note">请在共创世界素材集市搜索"慕然科技"或"Morgan"。<br>也可访问"工具"页的扩展库</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 工具页 -->
+                <section id="tools" class="page">
+                    <h2 class="card-title"><i class="fas fa-tools"></i>实用工具</h2>
+                    <div class="card tool-card">
+                        <h3 class="card-title">Base64 编码与解码</h3>
+                        <textarea class="tool-input" id="inputText" placeholder="请输入需要编码或解码的内容..."></textarea>
+                        <div class="tool-buttons">
+                            <button class="btn" id="encodeBtn">编码为 Base64</button>
+                            <button class="btn btn-secondary" id="decodeBtn">解码 Base64</button>
+                        </div>
                         <textarea class="tool-input" id="resultText" placeholder="结果将显示在这里..." readonly></textarea>
                         <button class="btn" id="copyBtn" style="display: none;">复制结果</button>
                     </div>
-                </div>
-                
-                <div class="works-grid">
-                    <div class="work-item fade-in">
-                        <h3>Scratch积木扩展开发教程</h3>
-                        <p>教你如何开发自己的Scratch积木扩展，从基础到高级，详细讲解扩展开发流程和技巧。</p>
-                        <button class="btn" style="margin-top: 15px;" onclick="confirmRedirect('https://kejicx.github.io/teach/')">前往教程</button>
-                    </div>
-                    
-                    <div class="work-item fade-in">
-                        <h3>Scratch积木扩展库</h3>
-                        <p>丰富、实用的积木扩展库，包含各种交互组件、工具函数和安全保护模块，助力你的Scratch创作。</p>
-                        <button class="btn" style="margin-top: 15px;" onclick="confirmRedirect('https://ccwmoran.github.io/code/')">访问代码库</button>
-                    </div>
-                    
-                    <!-- 新增的Saobby板块 -->
-                    <div class="work-item fade-in">
-                        <h3>Saobby - 实用小工具合集</h3>
-                        <p>免费图床、网页访问计数、人机验证等多种实用工具，还有活跃的兴趣社区。</p>
-                        <p style="margin-top: 10px; font-size: 0.9rem; color: var(--light-text);">*此网站非慕然科技制作</p>
-                        <button class="btn" style="margin-top: 15px;" onclick="confirmRedirect('https://www.saobby.com/')">访问Saobby的主页</button>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- 联系方式 -->
-        <section id="contact" class="page">
-            <div class="section">
-                <h2 class="section-title">联系我们</h2>
-                
-                <div class="contact-grid">
-                    <div class="contact-item fade-in">
-                        <div class="contact-icon">
-                            <i class="fab fa-qq"></i>
+                    <div class="works-grid">
+                        <div class="work-item">
+                            <h3>Scratch积木扩展开发教程</h3>
+                            <p>教你如何开发自己的Scratch积木扩展，从基础到高级。</p>
+                            <button class="btn" style="margin-top:15px;" onclick="confirmRedirect('https://kejicx.github.io/teach/')">前往教程</button>
                         </div>
-                        <h3>官方 QQ 群</h3>
-                        <p>群号：1004706370</p>
-                    </div>
-                    
-                    <div class="contact-item fade-in">
-                        <div class="contact-icon">
-                            <i class="fab fa-github"></i>
+                        <div class="work-item">
+                            <h3>Scratch积木扩展库</h3>
+                            <p>丰富、实用的积木扩展库，包含各种交互组件。</p>
+                            <button class="btn" style="margin-top:15px;" onclick="confirmRedirect('https://ccwmoran.github.io/code/')">访问代码库</button>
                         </div>
-                        <h3>GitHub 账号</h3>
-                        <p>账号ID：ccwmoran</p>
-                    </div>
-                    
-                    <div class="contact-item fade-in">
-                        <div class="contact-icon">
-                            <i class="fab fa-weixin"></i>
-                        </div>
-                        <h3>微信公众号</h3>
-                        <p>微信搜：慕然科技</p>
-                    </div>
-                </div>
-                
-                <div class="card fade-in" style="margin-top: 40px;">
-                    <h2 class="card-title">友情链接</h2>
-                    <div class="friend-links-grid">
-                        <div class="friend-link-item">
-                            <h3>熵</h3>
-                            <p>世界本就浑浊，罪与爱同歌</p>
-                            <a href="https://www.nekt.qzz.io" class="mysxl-link" target="_blank">去看看↗</a>
-                        </div>
-                        <div class="friend-link-item">
-                            <h3>瞰界摄影</h3>
-                            <p>翱翔视界！专业航拍摄影团队。</p>
-                            <a href="https://b23.tv/eWbJDSf" class="mysxl-link" target="_blank">去看看↗</a>
-                        </div>
-                        <div class="friend-link-item">
-                            <h3>孟轩网的小站</h3>
-                            <p>一个简洁、美观、纯净、无广告的小站</p>
-                            <a href="https://www.mxw2024.top/" class="mysxl-link" target="_blank">去看看↗</a>
-                        </div>
-                        <div class="friend-link-item">
-                            <h3>孟轩科技's blog</h3>
-                            <p>一个简洁、美观、纯净、无广告的小站</p>
-                            <a href="https://blog.mxw2024.top" class="mysxl-link" target="_blank">去看看↗</a>
-                        </div>
-                        <div class="friend-link-item">
-                            <h3>友链空位3</h3>
-                            <p>快去申请吧！</p>
-                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
-                        </div>
-                        <div class="friend-link-item">
-                            <h3>友链空位4</h3>
-                            <p>快去申请吧！</p>
-                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
-                        </div>
-                        <div class="friend-link-item">
-                            <h3>友链空位5</h3>
-                            <p>快去申请吧！</p>
-                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
-                        </div>
-                        <div class="friend-link-item">
-                            <h3>友链空位6</h3>
-                            <p>快去申请吧！</p>
-                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
-                        </div>
-                        <div class="friend-link-item">
-                            <h3>友链空位7</h3>
-                            <p>快去申请吧！</p>
-                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
-                        </div>
-                        <div class="friend-link-item">
-                            <h3>友链空位8</h3>
-                            <p>快去申请吧！</p>
-                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
-                        </div>
-                        <div class="friend-link-item">
-                            <h3>友链空位9</h3>
-                            <p>快去申请吧！</p>
-                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
-                        </div>
-                        <div class="friend-link-item">
-                            <h3>友链空位10</h3>
-                            <p>快去申请吧！</p>
-                            <a href="https://ccwmoran.mysxl.cn" class="mysxl-link" target="_blank">去申请↗</a>
+                        <div class="work-item">
+                            <h3>Saobby - 实用小工具合集</h3>
+                            <p>免费图床、网页访问计数、人机验证等。</p>
+                            <p style="font-size:0.9rem; color:gray;">*此网站非慕然科技制作</p>
+                            <button class="btn" style="margin-top:15px;" onclick="confirmRedirect('https://www.saobby.com/')">访问Saobby的主页</button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                </section>
 
-        <!-- 关于我们 -->
-        <section id="about" class="page">
-            <div class="section">
-                <h2 class="section-title">关于我们</h2>
-                
-                <div class="about-content">
-                    <div class="card fade-in">
-                        <h2 class="card-title">关于慕然科技</h2>
-                        <p>创建时间：2023年5月4日</p>
-                        <p>室长：Morgan</p>
-                        <p>B站账号：请在此输入Morgan</p>
-                        <p>叽里咕噜叽里咕噜（不知道在说啥</p>
+                <!-- 联系方式 -->
+                <section id="contact" class="page">
+                    <h2 class="card-title"><i class="fas fa-address-book"></i>联系我们</h2>
+                    <div class="contact-grid">
+                        <div class="contact-item"><div class="contact-icon"><i class="fab fa-qq"></i></div><h3>官方 QQ 群</h3><p>1004706370</p></div>
+                        <div class="contact-item"><div class="contact-icon"><i class="fab fa-github"></i></div><h3>GitHub</h3><p>ccwmoran</p></div>
+                        <div class="contact-item"><div class="contact-icon"><i class="fab fa-weixin"></i></div><h3>微信公众号</h3><p>慕然科技</p></div>
                     </div>
-                    
-                    <div class="card fade-in">
-                        <h2 class="card-title">关于Morgan</h2>
-                        <p>最喜欢的歌：日落（嗯对，太好听了）</p>
-                        <p>爱好：编程、数码产品探索、界面设计、听燕姿的歌</p>
-                        <p>技术特长：Scratch扩展开发、UI设计、数码科技</p>
-                        <p><a href="https://ccwmoran.github.io/Morgan" target="_blank">「去Morgan的小站看看↗」</a></p>
+                    <div class="card" style="margin-top:30px;">
+                        <h2 class="card-title">友情链接</h2>
+                        <div class="friend-links-grid">
+                            <div class="friend-link-item"><h3>熵</h3><p>世界本就浑浊，罪与爱同歌</p><a href="https://www.nekt.qzz.io" class="mysxl-link" target="_blank">去看看↗</a></div>
+                            <div class="friend-link-item"><h3>瞰界摄影</h3><p>翱翔视界！专业航拍</p><a href="https://b23.tv/eWbJDSf" class="mysxl-link" target="_blank">去看看↗</a></div>
+                            <div class="friend-link-item"><h3>孟轩网的小站</h3><p>简洁纯净的小站</p><a href="https://www.mxw2024.top/" class="mysxl-link" target="_blank">去看看↗</a></div>
+                            <div class="friend-link-item"><h3>孟轩科技's blog</h3><p>无广告博客</p><a href="https://blog.mxw2024.top" class="mysxl-link" target="_blank">去看看↗</a></div>
+                            <!-- 友链空位若干 -->
+                            <div class="friend-link-item"><h3>友链空位3</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
+                            <div class="friend-link-item"><h3>友链空位4</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
+                            <div class="friend-link-item"><h3>友链空位5</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
+                            <div class="friend-link-item"><h3>友链空位6</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
+                            <div class="friend-link-item"><h3>友链空位7</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
+                            <div class="friend-link-item"><h3>友链空位8</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
+                            <div class="friend-link-item"><h3>友链空位9</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
+                            <div class="friend-link-item"><h3>友链空位10</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
+                        </div>
                     </div>
+                </section>
+
+                <!-- 关于我们 -->
+                <section id="about" class="page">
+                    <h2 class="card-title"><i class="fas fa-info-circle"></i>关于我们</h2>
+                    <div style="display: grid; gap: 24px; grid-template-columns: 1fr 1fr;">
+                        <div class="card">
+                            <h3>慕然科技</h3>
+                            <p>创建时间：2023年5月4日</p><p>室长：Morgan</p><p>B站：请在此输入Morgan</p>
+                        </div>
+                        <div class="card">
+                            <h3>关于Morgan</h3>
+                            <p>最喜欢的歌：日落</p><p>爱好：编程、数码、设计、听燕姿的歌</p><p>技术特长：Scratch扩展开发、UI设计</p>
+                            <p><a href="https://ccwmoran.github.io/Morgan" target="_blank">「去Morgan的小站看看↗」</a></p>
+                        </div>
+                    </div>
+                </section>
+            </div> <!-- page-container -->
+
+            <!-- 页脚 (位于右侧面板内, 保持共享) -->
+            <footer class="footer">
+                <div class="footer-links">
+                    <a href="https://ccw.site/s/233J3" target="_blank">慕然科技的共创主页↗</a>
+                    <a href="https://ccw.site/s/bL4gnr" target="_blank">Morgan的共创主页↗</a>
                 </div>
-            </div>
-        </section>
-    </div>
+                <div class="footer-divider"></div>
+                <p class="copyright">© 2026 慕然科技CCWMORAN. 保留所有权利. <a href="https://icp.gov.moe/?keyword=20261041" target="_blank">萌ICP备20261041号</a></p>
+                <p class="footer-stats">该网页已被访问 <img src="https://w.saobby.com/w/cbudl97s" alt="访问统计"> 次（自2025年10月12日起）</p>
+                <div class="footer-divider"></div>
+                <p class="footer-join" id="versionLog" style="cursor:pointer; color:var(--secondary-color);">加入我们或与我们合作↗</p>
+            </footer>
+        </div> <!-- main-panel -->
+    </div> <!-- layout -->
 
-    <!-- 页脚 -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="https://ccw.site/s/233J3" target="_blank">慕然科技的共创主页↗</a>
-                <a href="https://ccw.site/s/bL4gnr" target="_blank">Morgan的共创主页↗</a>
-            </div>
-            
-            <div class="footer-divider"></div>
-            
-            <p class="copyright">© 2026 慕然科技CCWMORAN. 保留所有权利.</p>
-            <p class="copyright"><a href="https://icp.gov.moe/?keyword=20261041" target="_blank">萌ICP备20261041号</a></p>
-            
-            <div class="footer-divider"></div>
-            
-            <p class="footer-stats">该网页已被访问 <img src="https://w.saobby.com/w/cbudl97s" alt="访问统计"> 次（自2025年10月12日起开始计算）</p>
-            
-            <div class="footer-divider"></div>
-            
-            <p class="footer-join" id="versionLog">加入我们或与我们合作↗</p>
-        </div>
-    </footer>
-
-    <!-- 加入我们的弹窗 -->
+    <!-- 模态框 (加入我们) -->
     <div class="modal-overlay" id="versionModal">
         <div class="modal">
-            <h3 class="modal-title">加入我们或与我们合作</h3>
-            <div class="modal-content">
-                <p><strong>与我们一起共创世界、科技创新！</strong></p>
-                <p>申请链接↓</p>
-                <p>🔗https://ccwmoran.mysxl.cn/</p>
-            </div>
-            <div class="modal-buttons">
-                <button class="btn" onclick="closeModal('versionModal')">关闭</button>
-            </div>
+            <h3 class="modal-title">加入我们或合作</h3>
+            <p><strong>与我们一起共创世界、科技创新！</strong></p><p>申请链接：</p><p>🔗 https://ccwmoran.mysxl.cn/</p>
+            <div class="modal-buttons"><button class="btn" onclick="closeModal('versionModal')">关闭</button></div>
         </div>
     </div>
 
-    <!-- 确认跳转弹窗 -->
+    <!-- 跳转确认弹窗 -->
     <div class="modal-overlay" id="redirectModal">
         <div class="modal">
             <h3 class="modal-title">跳转确认</h3>
-            <div class="modal-content">
-                <p>即将跳转至外部网站：</p>
-                <p id="redirectTarget"></p>
-                <p>请注意，该链接将引导您离开当前页面。</p>
-            </div>
-            <div class="modal-buttons">
-                <button class="btn" id="redirectConfirm">继续跳转</button>
-                <button class="btn btn-secondary" id="redirectCancel">取消</button>
-            </div>
+            <p id="redirectTarget"></p><p>即将离开当前页面。</p>
+            <div class="modal-buttons"><button class="btn" id="redirectConfirm">继续跳转</button><button class="btn btn-secondary" id="redirectCancel">取消</button></div>
         </div>
     </div>
-
-    <!-- 复制通知 -->
-    <div class="copy-notification" id="copyNotification">已复制到剪贴板</div>
+    <div class="copy-notification" id="copyNotification">已复制</div>
 
     <script>
-        // 页面切换功能
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        (function() {
+            // 页面切换 & 导航激活
             const pages = document.querySelectorAll('.page');
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
             const mobileMenu = document.getElementById('mobileMenu');
-            
-            // 初始显示首页
-            showPage('home');
-            
-            // 导航链接点击事件 - 桌面端
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetPage = this.getAttribute('href').substring(1);
-                    
-                    // 更新导航激活状态
-                    navLinks.forEach(nav => nav.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // 同步移动端菜单激活状态
-                    updateMobileNavActive(targetPage);
-                    
-                    // 显示目标页面
-                    showPage(targetPage);
+            const mobileBtn = document.getElementById('mobileMenuBtn');
+            const versionLog = document.getElementById('versionLog');
+            const versionModal = document.getElementById('versionModal');
+
+            function showPage(pageId) {
+                pages.forEach(p => p.classList.remove('active'));
+                const target = document.getElementById(pageId);
+                if (target) target.classList.add('active');
+                // 更新侧栏active
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${pageId}`) link.classList.add('active');
                 });
-            });
-            
-            // 导航链接点击事件 - 移动端
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
+                // 更新移动端active
+                mobileNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${pageId}`) link.classList.add('active');
+                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // 监听侧边栏链接
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const targetPage = this.getAttribute('href').substring(1);
-                    
-                    // 更新移动端导航激活状态
-                    mobileNavLinks.forEach(nav => nav.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // 同步桌面端菜单激活状态
-                    updateDesktopNavActive(targetPage);
-                    
-                    // 显示目标页面
-                    showPage(targetPage);
-                    
-                    // 关闭移动端菜单
+                    const pageId = link.getAttribute('href').substring(1);
+                    showPage(pageId);
+                    // 移动端菜单如果开着, 关闭它
                     mobileMenu.classList.remove('active');
+                    if (mobileBtn.querySelector('i')) {
+                        mobileBtn.querySelector('i').classList.remove('fa-times');
+                        mobileBtn.querySelector('i').classList.add('fa-bars');
+                    }
                 });
             });
-            
-            // 移动端菜单按钮点击事件
-            mobileMenuBtn.addEventListener('click', function() {
+
+            // 移动端导航点击
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = link.getAttribute('href').substring(1);
+                    showPage(pageId);
+                    mobileMenu.classList.remove('active');
+                    const icon = mobileBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+
+            // 移动端菜单按钮
+            mobileBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('active');
-                
-                // 切换菜单图标
-                const icon = this.querySelector('i');
+                const icon = mobileBtn.querySelector('i');
                 if (mobileMenu.classList.contains('active')) {
                     icon.classList.remove('fa-bars');
                     icon.classList.add('fa-times');
@@ -1042,191 +812,76 @@
                     icon.classList.add('fa-bars');
                 }
             });
-            
-            // 点击页面其他区域关闭移动端菜单
-            document.addEventListener('click', function(e) {
-                if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target) && mobileMenu.classList.contains('active')) {
+
+            // 关闭移动端菜单 (点击外部)
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !mobileBtn.contains(e.target) && mobileMenu.classList.contains('active')) {
                     mobileMenu.classList.remove('active');
-                    const icon = mobileMenuBtn.querySelector('i');
+                    const icon = mobileBtn.querySelector('i');
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
                 }
             });
-            
-            // 窗口大小变化时重置菜单
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    mobileMenu.classList.remove('active');
-                    const icon = mobileMenuBtn.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
+
+            // 版本日志弹窗
+            versionLog.addEventListener('click', () => {
+                versionModal.classList.add('active');
             });
-            
-            // 更新移动端导航激活状态
-            function updateMobileNavActive(pageId) {
-                mobileNavLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${pageId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-            
-            // 更新桌面端导航激活状态
-            function updateDesktopNavActive(pageId) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${pageId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-            
-            function showPage(pageId) {
-                // 隐藏所有页面
-                pages.forEach(page => {
-                    page.classList.remove('active');
-                });
-                
-                // 显示目标页面
-                const targetPage = document.getElementById(pageId);
-                if (targetPage) {
-                    targetPage.classList.add('active');
-                    
-                    // 淡入动画
-                    const fadeElements = targetPage.querySelectorAll('.fade-in');
-                    fadeElements.forEach((el, index) => {
-                        setTimeout(() => {
-                            el.style.opacity = '0';
-                            el.style.transform = 'translateY(20px)';
-                            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                            
-                            setTimeout(() => {
-                                el.style.opacity = '1';
-                                el.style.transform = 'translateY(0)';
-                            }, 50);
-                        }, index * 100);
-                    });
-                }
-                
-                // 滚动到顶部
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-            
-            // Base64 工具功能
+            window.closeModal = (id) => {
+                document.getElementById(id).classList.remove('active');
+            };
+
+            // Base64工具
             const inputText = document.getElementById('inputText');
             const resultText = document.getElementById('resultText');
             const encodeBtn = document.getElementById('encodeBtn');
             const decodeBtn = document.getElementById('decodeBtn');
             const copyBtn = document.getElementById('copyBtn');
-            const copyNotification = document.getElementById('copyNotification');
-            
-            encodeBtn.addEventListener('click', function() {
-                if (inputText.value.trim() === '') {
-                    alert('请输入需要编码的内容');
-                    return;
-                }
-                
-                try {
-                    const encoded = btoa(unescape(encodeURIComponent(inputText.value)));
-                    resultText.value = encoded;
-                    copyBtn.style.display = 'block';
-                } catch (e) {
-                    alert('编码失败：无效字符');
-                }
+            const copyNoti = document.getElementById('copyNotification');
+
+            encodeBtn.addEventListener('click', ()=>{
+                if(!inputText.value.trim()) return alert('输入内容');
+                try{ resultText.value = btoa(unescape(encodeURIComponent(inputText.value))); copyBtn.style.display='block'; }catch(e){ alert('编码失败'); }
             });
-            
-            decodeBtn.addEventListener('click', function() {
-                if (inputText.value.trim() === '') {
-                    alert('请输入需要解码的Base64字符串');
-                    return;
-                }
-                
-                try {
-                    const decoded = decodeURIComponent(escape(atob(inputText.value)));
-                    resultText.value = decoded;
-                    copyBtn.style.display = 'block';
-                } catch (e) {
-                    alert('解码失败：无效的Base64字符串');
-                }
+            decodeBtn.addEventListener('click', ()=>{
+                if(!inputText.value.trim()) return alert('输入Base64');
+                try{ resultText.value = decodeURIComponent(escape(atob(inputText.value))); copyBtn.style.display='block'; }catch(e){ alert('解码失败'); }
             });
-            
-            copyBtn.addEventListener('click', function() {
-                if (resultText.value.trim() === '') {
-                    alert('没有可复制的内容');
-                    return;
-                }
-                
-                resultText.select();
-                document.execCommand('copy');
-                
-                // 显示复制通知
-                copyNotification.classList.add('show');
-                setTimeout(() => {
-                    copyNotification.classList.remove('show');
-                }, 2000);
+            copyBtn.addEventListener('click', ()=>{
+                resultText.select(); document.execCommand('copy'); copyNoti.classList.add('show'); setTimeout(()=>copyNoti.classList.remove('show'),1500);
             });
-            
-            // 加入我们或与我们合作
-            const versionLog = document.getElementById('versionLog');
-            const versionModal = document.getElementById('versionModal');
-            
-            versionLog.addEventListener('click', function() {
-                versionModal.classList.add('active');
-            });
-            
-            // 跳转确认功能
+
+            // 跳转确认逻辑
             const redirectModal = document.getElementById('redirectModal');
             const redirectTarget = document.getElementById('redirectTarget');
             const redirectConfirm = document.getElementById('redirectConfirm');
             const redirectCancel = document.getElementById('redirectCancel');
-            let pendingRedirectUrl = null;
-            
-            window.confirmRedirect = function(url) {
-                redirectTarget.textContent = url.length > 50 ? url.substring(0, 50) + '...' : url;
-                pendingRedirectUrl = url;
+            let pendingUrl = null;
+            window.confirmRedirect = (url) => {
+                redirectTarget.innerText = url.length>50 ? url.slice(0,50)+'...' : url;
+                pendingUrl = url;
                 redirectModal.classList.add('active');
             };
-            
-            redirectConfirm.addEventListener('click', function() {
-                if (pendingRedirectUrl) {
-                    window.open(pendingRedirectUrl, '_blank');
-                }
+            redirectConfirm.addEventListener('click', ()=>{
+                if(pendingUrl) window.open(pendingUrl, '_blank');
                 redirectModal.classList.remove('active');
-                pendingRedirectUrl = null;
             });
-            
-            redirectCancel.addEventListener('click', function() {
+            redirectCancel.addEventListener('click', ()=>{
                 redirectModal.classList.remove('active');
-                pendingRedirectUrl = null;
+                pendingUrl = null;
             });
-            
-            // 关闭弹窗函数
-            window.closeModal = function(modalId) {
-                document.getElementById(modalId).classList.remove('active');
-            };
-            
-            // 点击弹窗外部关闭
+            // 模态层关闭
             document.querySelectorAll('.modal-overlay').forEach(modal => {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        this.classList.remove('active');
-                        if (this.id === 'redirectModal') {
-                            pendingRedirectUrl = null;
-                        }
-                    }
-                });
+                modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
             });
-            
-            // 外部链接点击事件
-            document.querySelectorAll('a[target="_blank"]').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    confirmRedirect(this.href);
-                });
+            // 外部链接拦截
+            document.querySelectorAll('a[target="_blank"]:not([href^="#"])').forEach(a => {
+                a.addEventListener('click', (e) => { e.preventDefault(); confirmRedirect(a.href); });
             });
-        });
+
+            // 初始激活首页
+            showPage('home');
+        })();
     </script>
 </body>
 </html>
