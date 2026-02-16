@@ -8,8 +8,8 @@
     <style>
         /* ----- 全局变量 ----- */
         :root {
-            --primary-color: #a5d296;      /* 浅绿 */
-            --secondary-color: #5ca05c;    /* 深绿 */
+            --primary-color: #a5d296;
+            --secondary-color: #5ca05c;
             --bg-color: #ffffff;
             --text-primary: #1f2a3a;
             --text-secondary: #5f6b7a;
@@ -38,7 +38,7 @@
             overflow-x: hidden;
         }
 
-        /* ----- 导航栏 (顶栏) 仿DeepSeekAPI开发平台 ----- */
+        /* ----- 导航栏 (顶栏) ----- */
         .navbar {
             position: fixed;
             top: 0;
@@ -76,7 +76,6 @@
         .logo-icon {
             width: 36px;
             height: 36px;
-            /* Logo区域 */
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -85,10 +84,9 @@
         .logo-icon img {
             width: 100%;
             height: 100%;
-            object-fit: contain;  /* 保证图片完整缩放，不留白 */
+            object-fit: contain;
         }
 
-        /* 移动端菜单按钮 */
         .mobile-menu-btn {
             display: none;
             background: transparent;
@@ -99,7 +97,6 @@
             padding: 8px;
         }
 
-        /* 移动端折叠菜单 (与原来一致) */
         .mobile-menu {
             display: none;
             position: fixed;
@@ -147,11 +144,11 @@
         /* ----- 左右布局 ----- */
         .layout {
             display: flex;
-            margin-top: 64px;   /* 顶栏高度 */
+            margin-top: 64px;
             min-height: calc(100vh - 64px);
         }
 
-        /* 左侧导航 (DeepSeek风) */
+        /* 左侧导航 */
         .sidebar {
             width: 260px;
             background-color: var(--sidebar-bg);
@@ -197,10 +194,14 @@
         .sidebar-menu a i {
             width: 22px;
             font-size: 1.2rem;
-            color: #8a9aa8;
+            color: #7b8b9b;
+            transition: color 0.15s;
         }
         .sidebar-menu a:hover {
             background: rgba(92, 160, 92, 0.06);
+            color: var(--secondary-color);
+        }
+        .sidebar-menu a:hover i {
             color: var(--secondary-color);
         }
         .sidebar-menu a.active {
@@ -215,13 +216,12 @@
         /* 右侧主内容区 */
         .main-panel {
             flex: 1;
-            margin-left: 260px;   /* 与侧边栏同宽 */
+            margin-left: 260px;
             padding: 24px 32px 40px;
             background: #ffffff;
-            min-width: 0;  /* 防止flex溢出 */
+            min-width: 0;
         }
 
-        /* 吸顶广告栏 (近期动态) — 仿DeepSeek广告条 */
         .info-banner {
             background: var(--banner-bg);
             border: 1px solid #d9eaf5;
@@ -249,10 +249,6 @@
             text-decoration: underline;
         }
 
-        /* 页面容器 (多页切换) */
-        .page-container {
-            /* 所有page默认隐藏, active显示 */
-        }
         .page {
             display: none;
             animation: fadeIn 0.3s ease;
@@ -261,7 +257,6 @@
             display: block;
         }
 
-        /* 卡片风格 (去玻璃效果, 改为纯白卡片) */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-light);
@@ -291,7 +286,6 @@
             font-size: 1.3rem;
         }
 
-        /* 首页hero */
         .hero {
             text-align: center;
             padding: 40px 20px;
@@ -310,13 +304,13 @@
             font-size: 1.1rem;
         }
 
-        /* 作品网格、工具网格等 (保留原结构和内容) */
         .works-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: 1fr;
             gap: 24px;
             margin-top: 10px;
         }
+
         .work-item {
             background: var(--card-bg);
             border: 1px solid var(--border-light);
@@ -349,12 +343,12 @@
             margin-right: 10px;
         }
 
-        /* 联系方式网格 */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 24px;
         }
+
         .contact-item {
             text-align: center;
             padding: 24px 16px;
@@ -375,7 +369,6 @@
             font-size: 1.6rem;
         }
 
-        /* 友情链接网格 (每行两个) */
         .friend-links-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -403,7 +396,6 @@
             font-size: 0.9rem;
         }
 
-        /* 工具页文本区 */
         .tool-input {
             width: 100%;
             padding: 14px;
@@ -436,7 +428,6 @@
             background: #e2e6ea;
         }
 
-        /* 页脚 (在右侧面板内) */
         .footer {
             margin-top: 48px;
             padding: 32px 0 16px;
@@ -468,7 +459,6 @@
             vertical-align: middle;
         }
 
-        /* 模态框 (保留原样式, 进行了微调) */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -515,7 +505,6 @@
             display: block;
         }
 
-        /* 响应式: 移动端隐藏侧栏, 显示移动菜单按钮 */
         @media (max-width: 768px) {
             .sidebar {
                 display: none;
@@ -528,6 +517,9 @@
                 display: block;
             }
             .friend-links-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-grid {
                 grid-template-columns: 1fr;
             }
             .tool-buttons {
@@ -558,39 +550,41 @@
         </div>
     </nav>
 
-    <!-- 移动端折叠菜单 (保留原功能) -->
+    <!-- 移动端折叠菜单 -->
     <div class="mobile-menu" id="mobileMenu">
         <ul>
             <li><a href="#home" class="mobile-nav-link active">首页</a></li>
             <li><a href="#works" class="mobile-nav-link">精选</a></li>
             <li><a href="#tools" class="mobile-nav-link">工具</a></li>
             <li><a href="#contact" class="mobile-nav-link">联系方式</a></li>
+            <li><a href="#friends" class="mobile-nav-link">友情链接</a></li>
             <li><a href="#about" class="mobile-nav-link">关于我们</a></li>
         </ul>
     </div>
 
-    <!-- 左右布局开始 -->
+    <!-- 左右布局 -->
     <div class="layout">
-        <!-- 左侧导航 (DeepSeek开发平台风格) -->
+        <!-- 左侧导航 -->
         <aside class="sidebar">
             <ul class="sidebar-menu">
-                <li><a href="#home" class="sidebar-link active"><i class="fas fa-home"></i>首页</a></li>
+                <li><a href="#home" class="sidebar-link active"><i class="fas fa-house"></i>首页</a></li>
                 <li><a href="#works" class="sidebar-link"><i class="fas fa-star"></i>精选</a></li>
-                <li><a href="#tools" class="sidebar-link"><i class="fas fa-tools"></i>工具</a></li>
-                <li><a href="#contact" class="sidebar-link"><i class="fas fa-address-book"></i>联系方式</a></li>
-                <li><a href="#about" class="sidebar-link"><i class="fas fa-info-circle"></i>关于我们</a></li>
+                <li><a href="#tools" class="sidebar-link"><i class="fas fa-gear"></i>工具</a></li>
+                <li><a href="#contact" class="sidebar-link"><i class="fas fa-envelope"></i>联系方式</a></li>
+                <li><a href="#friends" class="sidebar-link"><i class="fas fa-link"></i>友情链接</a></li>
+                <li><a href="#about" class="sidebar-link"><i class="fas fa-circle-info"></i>关于我们</a></li>
             </ul>
         </aside>
 
         <!-- 右侧主面板 -->
         <div class="main-panel">
-            <!-- 吸顶广告: 近期动态 (移动到此处) -->
+            <!-- 吸顶动态 -->
             <div class="info-banner">
                 <i class="fas fa-bullhorn"></i>
                 <span><strong>近期动态：</strong>慕然Agent测试版上线啦！快去试试吧 <a href="https://ccwmoran.github.io/agent/" target="_blank">https://ccwmoran.github.io/agent/</a></span>
             </div>
 
-            <!-- 页面容器 (所有page) -->
+            <!-- 页面容器 -->
             <div class="page-container">
                 <!-- 首页 -->
                 <section id="home" class="page active">
@@ -664,16 +658,27 @@
                     </div>
                 </section>
 
-                <!-- 联系方式 -->
+                <!-- 联系方式 (一行两个 + Morgan小站独占一行) -->
                 <section id="contact" class="page">
-                    <h2 class="card-title"><i class="fas fa-address-book"></i>联系我们</h2>
+                    <h2 class="card-title"><i class="fas fa-envelope"></i>联系我们</h2>
                     <div class="contact-grid">
                         <div class="contact-item"><div class="contact-icon"><i class="fab fa-qq"></i></div><h3>官方 QQ 群</h3><p>1004706370</p></div>
                         <div class="contact-item"><div class="contact-icon"><i class="fab fa-github"></i></div><h3>GitHub</h3><p>ccwmoran</p></div>
                         <div class="contact-item"><div class="contact-icon"><i class="fab fa-weixin"></i></div><h3>微信公众号</h3><p>慕然科技</p></div>
+                        <!-- 哔哩哔哩，账号改为“请在此输入Morgan” -->
+                        <div class="contact-item"><div class="contact-icon"><i class="fab fa-bilibili"></i></div><h3>哔哩哔哩</h3><p>请在此输入Morgan</p></div>
                     </div>
-                    <div class="card" style="margin-top:30px;">
-                        <h2 class="card-title">友情链接</h2>
+                    <!-- Morgan的小站独占一行 -->
+                    <div class="card" style="margin-top: 20px;">
+                        <h3 class="card-title"><i class="fas fa-link"></i>Morgan的小站</h3>
+                        <p>访问 Morgan 的个人小站：<a href="https://ccwmoran.github.io/Morgan" target="_blank">https://ccwmoran.github.io/Morgan ↗</a></p>
+                    </div>
+                </section>
+
+                <!-- 友情链接 (独立页面，放在关于之前) -->
+                <section id="friends" class="page">
+                    <div class="card">
+                        <h2 class="card-title"><i class="fas fa-link"></i>友情链接</h2>
                         <div class="friend-links-grid">
                             <div class="friend-link-item"><h3>熵</h3><p>世界本就浑浊，罪与爱同歌</p><a href="https://www.nekt.qzz.io" class="mysxl-link" target="_blank">去看看↗</a></div>
                             <div class="friend-link-item"><h3>瞰界摄影</h3><p>翱翔视界！专业航拍</p><a href="https://b23.tv/eWbJDSf" class="mysxl-link" target="_blank">去看看↗</a></div>
@@ -691,24 +696,27 @@
                     </div>
                 </section>
 
-                <!-- 关于我们 -->
+                <!-- 关于我们 (添加人数描述，已移除B站信息) -->
                 <section id="about" class="page">
-                    <h2 class="card-title"><i class="fas fa-info-circle"></i>关于我们</h2>
+                    <h2 class="card-title"><i class="fas fa-circle-info"></i>关于我们</h2>
                     <div style="display: grid; gap: 24px; grid-template-columns: 1fr 1fr;">
                         <div class="card">
                             <h3>慕然科技</h3>
-                            <p>创建时间：2023年5月4日</p><p>室长：Morgan</p><p>B站：请在此输入Morgan</p>
+                            <p>创建时间：2023年5月4日</p>
+                            <p>室长：Morgan</p>
+                            <p>人数：看似有好多，实则只有Morgan一个。</p>
                         </div>
                         <div class="card">
                             <h3>关于Morgan</h3>
-                            <p>最喜欢的歌：日落</p><p>爱好：编程、数码、设计、听燕姿的歌</p><p>技术特长：Scratch扩展开发、UI设计</p>
-                            <p><a href="https://ccwmoran.github.io/Morgan" target="_blank">「去Morgan的小站看看↗」</a></p>
+                            <p>最喜欢的歌：日落</p>
+                            <p>爱好：编程、数码、设计、听燕姿的歌</p>
+                            <p>技术特长：Scratch扩展开发、UI设计</p>
                         </div>
                     </div>
                 </section>
             </div> <!-- page-container -->
 
-            <!-- 页脚 (位于右侧面板内) -->
+            <!-- 页脚 -->
             <footer class="footer">
                 <div class="footer-links">
                     <a href="https://ccw.site/s/233J3" target="_blank">慕然科技的共创主页↗</a>
@@ -744,7 +752,6 @@
 
     <script>
         (function() {
-            // 页面切换 & 导航激活
             const pages = document.querySelectorAll('.page');
             const sidebarLinks = document.querySelectorAll('.sidebar-link');
             const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
@@ -757,12 +764,10 @@
                 pages.forEach(p => p.classList.remove('active'));
                 const target = document.getElementById(pageId);
                 if (target) target.classList.add('active');
-                // 更新侧栏active
                 sidebarLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${pageId}`) link.classList.add('active');
                 });
-                // 更新移动端active
                 mobileNavLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${pageId}`) link.classList.add('active');
@@ -770,22 +775,20 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
-            // 监听侧边栏链接
             sidebarLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const pageId = link.getAttribute('href').substring(1);
                     showPage(pageId);
-                    // 移动端菜单如果开着, 关闭它
                     mobileMenu.classList.remove('active');
-                    if (mobileBtn.querySelector('i')) {
-                        mobileBtn.querySelector('i').classList.remove('fa-times');
-                        mobileBtn.querySelector('i').classList.add('fa-bars');
+                    const icon = mobileBtn.querySelector('i');
+                    if(icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
                     }
                 });
             });
 
-            // 移动端导航点击
             mobileNavLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -798,7 +801,6 @@
                 });
             });
 
-            // 移动端菜单按钮
             mobileBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('active');
                 const icon = mobileBtn.querySelector('i');
@@ -811,7 +813,6 @@
                 }
             });
 
-            // 关闭移动端菜单 (点击外部)
             document.addEventListener('click', (e) => {
                 if (!mobileMenu.contains(e.target) && !mobileBtn.contains(e.target) && mobileMenu.classList.contains('active')) {
                     mobileMenu.classList.remove('active');
@@ -821,7 +822,6 @@
                 }
             });
 
-            // 版本日志弹窗
             versionLog.addEventListener('click', () => {
                 versionModal.classList.add('active');
             });
@@ -849,7 +849,7 @@
                 resultText.select(); document.execCommand('copy'); copyNoti.classList.add('show'); setTimeout(()=>copyNoti.classList.remove('show'),1500);
             });
 
-            // 跳转确认逻辑
+            // 跳转确认
             const redirectModal = document.getElementById('redirectModal');
             const redirectTarget = document.getElementById('redirectTarget');
             const redirectConfirm = document.getElementById('redirectConfirm');
@@ -868,16 +868,14 @@
                 redirectModal.classList.remove('active');
                 pendingUrl = null;
             });
-            // 模态层关闭
             document.querySelectorAll('.modal-overlay').forEach(modal => {
                 modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
             });
-            // 外部链接拦截
             document.querySelectorAll('a[target="_blank"]:not([href^="#"])').forEach(a => {
                 a.addEventListener('click', (e) => { e.preventDefault(); confirmRedirect(a.href); });
             });
 
-            // 初始激活首页
+            // 初始化首页
             showPage('home');
         })();
     </script>
