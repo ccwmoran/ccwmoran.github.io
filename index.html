@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>慕然科技 · DeepSeek风格</title>
+    <title>慕然科技CCWMORAN</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ----- 全局变量 (主题色不变) ----- */
+        /* ----- 全局变量 ----- */
         :root {
             --primary-color: #a5d296;      /* 浅绿 */
             --secondary-color: #5ca05c;    /* 深绿 */
@@ -38,7 +38,7 @@
             overflow-x: hidden;
         }
 
-        /* ----- 导航栏 (顶栏) 仿DeepSeek简洁风格 ----- */
+        /* ----- 导航栏 (顶栏) 仿DeepSeekAPI开发平台 ----- */
         .navbar {
             position: fixed;
             top: 0;
@@ -76,7 +76,7 @@
         .logo-icon {
             width: 36px;
             height: 36px;
-            /* 移除圆形边框，背景色也去掉，图片完整显示 */
+            /* Logo区域 */
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -99,7 +99,7 @@
             padding: 8px;
         }
 
-        /* 移动端折叠菜单 (与原逻辑一致) */
+        /* 移动端折叠菜单 (与原来一致) */
         .mobile-menu {
             display: none;
             position: fixed;
@@ -144,14 +144,14 @@
             color: var(--secondary-color);
         }
 
-        /* ----- 左右布局 (仿DeepSeek控制台) ----- */
+        /* ----- 左右布局 ----- */
         .layout {
             display: flex;
             margin-top: 64px;   /* 顶栏高度 */
             min-height: calc(100vh - 64px);
         }
 
-        /* 左侧导航 (DeepSeek风格) */
+        /* 左侧导航 (DeepSeek风) */
         .sidebar {
             width: 260px;
             background-color: var(--sidebar-bg);
@@ -221,7 +221,7 @@
             min-width: 0;  /* 防止flex溢出 */
         }
 
-        /* 吸顶广告栏 (近期动态) — 仿DeepSeek提示条 */
+        /* 吸顶广告栏 (近期动态) — 仿DeepSeek广告条 */
         .info-banner {
             background: var(--banner-bg);
             border: 1px solid #d9eaf5;
@@ -261,7 +261,7 @@
             display: block;
         }
 
-        /* 卡片风格 (彻底去掉玻璃效果, 改为纯白干净卡片) */
+        /* 卡片风格 (去玻璃效果, 改为纯白卡片) */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-light);
@@ -310,7 +310,7 @@
             font-size: 1.1rem;
         }
 
-        /* 作品网格、工具网格等 (保留原结构) */
+        /* 作品网格、工具网格等 (保留原结构和内容) */
         .works-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -375,7 +375,7 @@
             font-size: 1.6rem;
         }
 
-        /* 友情链接网格 (每行两个, 原设计) */
+        /* 友情链接网格 (每行两个) */
         .friend-links-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -436,7 +436,7 @@
             background: #e2e6ea;
         }
 
-        /* 页脚 (位于右侧面板内) */
+        /* 页脚 (在右侧面板内) */
         .footer {
             margin-top: 48px;
             padding: 32px 0 16px;
@@ -468,7 +468,7 @@
             vertical-align: middle;
         }
 
-        /* 模态框 (保留原样式, 微调) */
+        /* 模态框 (保留原样式, 进行了微调) */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -543,7 +543,7 @@
 </head>
 <body>
 
-    <!-- 顶栏 (logo圆形边框已移除) -->
+    <!-- 顶栏 -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -571,7 +571,7 @@
 
     <!-- 左右布局开始 -->
     <div class="layout">
-        <!-- 左侧导航 (DeepSeek风格) -->
+        <!-- 左侧导航 (DeepSeek开发平台风格) -->
         <aside class="sidebar">
             <ul class="sidebar-menu">
                 <li><a href="#home" class="sidebar-link active"><i class="fas fa-home"></i>首页</a></li>
@@ -584,10 +584,10 @@
 
         <!-- 右侧主面板 -->
         <div class="main-panel">
-            <!-- 吸顶广告: 近期动态 (移至此处) -->
+            <!-- 吸顶广告: 近期动态 (移动到此处) -->
             <div class="info-banner">
                 <i class="fas fa-bullhorn"></i>
-                <span><strong>近期动态：</strong>慕然Agent测试版上线啦！快去试试吧↓ <a href="https://ccwmoran.github.io/agent/" target="_blank">https://ccwmoran.github.io/agent/</a></span>
+                <span><strong>近期动态：</strong>慕然Agent测试版上线啦！快去试试吧 <a href="https://ccwmoran.github.io/agent/" target="_blank">https://ccwmoran.github.io/agent/</a></span>
             </div>
 
             <!-- 页面容器 (所有page) -->
@@ -602,7 +602,6 @@
                         <h2 class="card-title"><i class="fas fa-bullhorn"></i>官方公告</h2>
                         <p>新春快乐，马年吉祥(˶╹ꇴ╹˶)🧨</p>
                     </div>
-                    <!-- 原来的近期动态卡片改为活动通知 -->
                     <div class="card">
                         <h2 class="card-title"><i class="fas fa-calendar-alt"></i>活动通知</h2>
                         <p>暂无活动</p>
@@ -680,7 +679,6 @@
                             <div class="friend-link-item"><h3>瞰界摄影</h3><p>翱翔视界！专业航拍</p><a href="https://b23.tv/eWbJDSf" class="mysxl-link" target="_blank">去看看↗</a></div>
                             <div class="friend-link-item"><h3>孟轩网的小站</h3><p>简洁纯净的小站</p><a href="https://www.mxw2024.top/" class="mysxl-link" target="_blank">去看看↗</a></div>
                             <div class="friend-link-item"><h3>孟轩科技's blog</h3><p>无广告博客</p><a href="https://blog.mxw2024.top" class="mysxl-link" target="_blank">去看看↗</a></div>
-                            <!-- 友链空位若干 -->
                             <div class="friend-link-item"><h3>友链空位3</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
                             <div class="friend-link-item"><h3>友链空位4</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
                             <div class="friend-link-item"><h3>友链空位5</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
@@ -710,14 +708,14 @@
                 </section>
             </div> <!-- page-container -->
 
-            <!-- 页脚 (位于右侧面板内, 保持共享) -->
+            <!-- 页脚 (位于右侧面板内) -->
             <footer class="footer">
                 <div class="footer-links">
                     <a href="https://ccw.site/s/233J3" target="_blank">慕然科技的共创主页↗</a>
                     <a href="https://ccw.site/s/bL4gnr" target="_blank">Morgan的共创主页↗</a>
                 </div>
                 <div class="footer-divider"></div>
-                <p class="copyright">© 2026 慕然科技CCWMORAN. 保留所有权利. <a href="https://icp.gov.moe/?keyword=20261041" target="_blank">萌ICP备20261041号</a></p>
+                <p class="copyright">© 2026 慕然科技CCWMORAN. 保留所有权利. <br><a href="https://icp.gov.moe/?keyword=20261041" target="_blank">萌ICP备20261041号</a></p>
                 <p class="footer-stats">该网页已被访问 <img src="https://w.saobby.com/w/cbudl97s" alt="访问统计"> 次（自2025年10月12日起）</p>
                 <div class="footer-divider"></div>
                 <p class="footer-join" id="versionLog" style="cursor:pointer; color:var(--secondary-color);">加入我们或与我们合作↗</p>
