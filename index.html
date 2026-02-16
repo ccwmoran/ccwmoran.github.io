@@ -724,6 +724,7 @@
                 </div>
                 <div class="footer-divider"></div>
                 <p class="copyright">© 2026 慕然科技CCWMORAN. 保留所有权利. <br><a href="https://icp.gov.moe/?keyword=20261041" target="_blank">萌ICP备20261041号</a></p>
+                <div class="footer-divider"></div>
                 <p class="footer-stats">该网页已被访问 <img src="https://w.saobby.com/w/cbudl97s" alt="访问统计"> 次（自2025年10月12日起）</p>
                 <div class="footer-divider"></div>
                 <p class="footer-join" id="versionLog" style="cursor:pointer; color:var(--secondary-color);">加入我们或与我们合作↗</p>
@@ -838,11 +839,11 @@
             const copyNoti = document.getElementById('copyNotification');
 
             encodeBtn.addEventListener('click', ()=>{
-                if(!inputText.value.trim()) return alert('输入内容');
+                if(!inputText.value.trim()) return alert('请先输入内容');
                 try{ resultText.value = btoa(unescape(encodeURIComponent(inputText.value))); copyBtn.style.display='block'; }catch(e){ alert('编码失败'); }
             });
             decodeBtn.addEventListener('click', ()=>{
-                if(!inputText.value.trim()) return alert('输入Base64');
+                if(!inputText.value.trim()) return alert('请先输入Base64');
                 try{ resultText.value = decodeURIComponent(escape(atob(inputText.value))); copyBtn.style.display='block'; }catch(e){ alert('解码失败'); }
             });
             copyBtn.addEventListener('click', ()=>{
