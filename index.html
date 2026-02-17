@@ -6,7 +6,6 @@
     <title>慕然科技CCWMORAN</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ----- 全局变量 ----- */
         :root {
             --primary-color: #a5d296;
             --secondary-color: #5ca05c;
@@ -38,7 +37,6 @@
             overflow-x: hidden;
         }
 
-        /* ----- 导航栏 (顶栏) ----- */
         .navbar {
             position: fixed;
             top: 0;
@@ -141,14 +139,12 @@
             color: var(--secondary-color);
         }
 
-        /* ----- 左右布局 ----- */
         .layout {
             display: flex;
             margin-top: 64px;
             min-height: calc(100vh - 64px);
         }
 
-        /* 左侧导航 */
         .sidebar {
             width: 260px;
             background-color: var(--sidebar-bg);
@@ -190,6 +186,7 @@
             border-radius: var(--radius-sm);
             transition: all 0.15s;
             font-size: 0.95rem;
+            position: relative;
         }
         .sidebar-menu a i {
             width: 22px;
@@ -212,8 +209,18 @@
         .sidebar-menu a.active i {
             color: var(--secondary-color);
         }
+        .sidebar-menu a.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 20px;
+            background: #5ca05c;
+            border-radius: 0 2px 2px 0;
+        }
 
-        /* 右侧主内容区 */
         .main-panel {
             flex: 1;
             margin-left: 260px;
@@ -262,12 +269,7 @@
             border: 1px solid var(--border-light);
             border-radius: var(--radius-md);
             padding: 24px;
-            box-shadow: var(--shadow-sm);
             margin-bottom: 24px;
-            transition: box-shadow 0.2s;
-        }
-        .card:hover {
-            box-shadow: var(--shadow-md);
         }
 
         .card-title {
@@ -299,9 +301,24 @@
             color: var(--secondary-color);
             margin-bottom: 8px;
         }
-        .hero p {
+        .typewriter-container {
+            display: inline-block;
+        }
+        .typewriter-text {
             color: var(--text-secondary);
             font-size: 1.1rem;
+            border-right: 2px solid var(--secondary-color);
+            animation: blink 0.75s step-end infinite;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .typewriter-text.finished {
+            border-right: none;
+            animation: none;
+        }
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--secondary-color) }
         }
 
         .works-grid {
@@ -316,10 +333,6 @@
             border: 1px solid var(--border-light);
             border-radius: var(--radius-md);
             padding: 22px;
-            transition: box-shadow 0.2s;
-        }
-        .work-item:hover {
-            box-shadow: var(--shadow-md);
         }
         .work-item h3 {
             font-size: 1.2rem;
@@ -459,6 +472,15 @@
             vertical-align: middle;
         }
 
+        .theme-link {
+            color: var(--secondary-color);
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .theme-link:hover {
+            text-decoration: underline;
+        }
+
         .modal-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -535,7 +557,6 @@
 </head>
 <body>
 
-    <!-- 顶栏 -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -550,7 +571,6 @@
         </div>
     </nav>
 
-    <!-- 移动端折叠菜单 -->
     <div class="mobile-menu" id="mobileMenu">
         <ul>
             <li><a href="#home" class="mobile-nav-link active">首页</a></li>
@@ -562,35 +582,33 @@
         </ul>
     </div>
 
-    <!-- 左右布局 -->
     <div class="layout">
-        <!-- 左侧导航 -->
         <aside class="sidebar">
             <ul class="sidebar-menu">
-                <li><a href="#home" class="sidebar-link active"><i class="fas fa-house"></i>首页</a></li>
-                <li><a href="#works" class="sidebar-link"><i class="fas fa-star"></i>精选</a></li>
-                <li><a href="#tools" class="sidebar-link"><i class="fas fa-gear"></i>工具</a></li>
-                <li><a href="#contact" class="sidebar-link"><i class="fas fa-envelope"></i>联系方式</a></li>
+                <li><a href="#home" class="sidebar-link active"><i class="fas fa-compass"></i>首页</a></li>
+                <li><a href="#works" class="sidebar-link"><i class="fas fa-layer-group"></i>精选</a></li>
+                <li><a href="#tools" class="sidebar-link"><i class="fas fa-screwdriver-wrench"></i>工具</a></li>
+                <li><a href="#contact" class="sidebar-link"><i class="fas fa-paper-plane"></i>联系方式</a></li>
                 <li><a href="#friends" class="sidebar-link"><i class="fas fa-link"></i>友情链接</a></li>
-                <li><a href="#about" class="sidebar-link"><i class="fas fa-circle-info"></i>关于我们</a></li>
+                <li><a href="#about" class="sidebar-link"><i class="fas fa-fingerprint"></i>关于我们</a></li>
+                <li style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-light);"><a href="https://ccw.site/s/233J3" class="external-link">慕然科技的共创主页<i class="fas fa-arrow-up-right-from-square" style="margin-left: 6px; font-size: 0.8rem;"></i></a></li>
+                <li><a href="https://ccw.site/s/bL4gnr" class="external-link">Morgan的共创主页<i class="fas fa-arrow-up-right-from-square" style="margin-left: 6px; font-size: 0.8rem;"></i></a></li>
             </ul>
         </aside>
 
-        <!-- 右侧主面板 -->
         <div class="main-panel">
-            <!-- 吸顶动态 -->
             <div class="info-banner">
                 <i class="fas fa-bullhorn"></i>
-                <span><strong>推广：</strong>慕然Agent测试版上线啦！快去试试吧 <a href="https://ccwmoran.github.io/agent/" target="_blank">https://ccwmoran.github.io/agent/</a></span>
+                <span><strong>推广：</strong>慕然Agent测试版上线啦！快去试试吧 <a href="https://ccwmoran.github.io/agent/" target="_blank" class="external-link">https://ccwmoran.github.io/agent/</a></span>
             </div>
 
-            <!-- 页面容器 -->
             <div class="page-container">
-                <!-- 首页 -->
                 <section id="home" class="page active">
                     <div class="hero fade-in">
                         <h1>慕然科技 CCWMORAN</h1>
-                        <p>愿你在峥嵘长青的世界里热忱不息</p>
+                        <div class="typewriter-container">
+                            <span class="typewriter-text" id="typewriter"></span>
+                        </div>
                     </div>
                     <div class="card">
                         <h2 class="card-title"><i class="fas fa-bullhorn"></i>官方公告</h2>
@@ -602,9 +620,8 @@
                     </div>
                 </section>
 
-                <!-- 精选作品 -->
                 <section id="works" class="page">
-                    <h2 class="card-title" style="border-bottom: none; padding-bottom: 0;"><i class="fas fa-star"></i>慕然科技的精选内容</h2>
+                    <h2 class="card-title" style="border-bottom: none; padding-bottom: 0;"><i class="fas fa-layer-group"></i>慕然科技的精选内容</h2>
                     <div class="works-grid">
                         <div class="work-item">
                             <h3>Scratch作品</h3>
@@ -624,9 +641,8 @@
                     </div>
                 </section>
 
-                <!-- 工具页 -->
                 <section id="tools" class="page">
-                    <h2 class="card-title"><i class="fas fa-tools"></i>实用工具</h2>
+                    <h2 class="card-title"><i class="fas fa-screwdriver-wrench"></i>实用工具</h2>
                     <div class="card tool-card">
                         <h3 class="card-title">Base64 编码与解码</h3>
                         <textarea class="tool-input" id="inputText" placeholder="请输入需要编码或解码的内容..."></textarea>
@@ -658,47 +674,42 @@
                     </div>
                 </section>
 
-                <!-- 联系方式 (一行两个 + Morgan小站独占一行) -->
                 <section id="contact" class="page">
-                    <h2 class="card-title"><i class="fas fa-envelope"></i>联系我们</h2>
+                    <h2 class="card-title"><i class="fas fa-paper-plane"></i>联系我们</h2>
                     <div class="contact-grid">
                         <div class="contact-item"><div class="contact-icon"><i class="fab fa-qq"></i></div><h3>官方 QQ 群</h3><p>1004706370</p></div>
                         <div class="contact-item"><div class="contact-icon"><i class="fab fa-github"></i></div><h3>GitHub</h3><p>ccwmoran</p></div>
                         <div class="contact-item"><div class="contact-icon"><i class="fab fa-weixin"></i></div><h3>微信公众号</h3><p>慕然科技</p></div>
-                        <!-- 哔哩哔哩，账号改为“请在此输入Morgan” -->
                         <div class="contact-item"><div class="contact-icon"><i class="fab fa-bilibili"></i></div><h3>哔哩哔哩</h3><p>请在此输入Morgan</p></div>
                     </div>
-                    <!-- Morgan的小站独占一行 -->
                     <div class="card" style="margin-top: 20px;">
                         <h3 class="card-title"><i class="fas fa-link"></i>Morgan的小站</h3>
-                        <p>访问 Morgan 的个人小站：<a href="https://ccwmoran.github.io/Morgan" target="_blank">https://ccwmoran.github.io/Morgan ↗</a></p>
+                        <p>访问 Morgan 的个人小站：<a href="https://ccwmoran.github.io/Morgan" target="_blank" class="external-link theme-link">https://ccwmoran.github.io/Morgan ↗</a></p>
                     </div>
                 </section>
 
-                <!-- 友情链接 (独立页面，放在关于之前) -->
                 <section id="friends" class="page">
                     <div class="card">
                         <h2 class="card-title"><i class="fas fa-link"></i>友情链接</h2>
                         <div class="friend-links-grid">
-                            <div class="friend-link-item"><h3>熵</h3><p>世界本就浑浊，罪与爱同歌</p><a href="https://www.nekt.qzz.io" class="mysxl-link" target="_blank">去看看↗</a></div>
-                            <div class="friend-link-item"><h3>瞰界摄影</h3><p>翱翔视界！专业航拍</p><a href="https://b23.tv/eWbJDSf" class="mysxl-link" target="_blank">去看看↗</a></div>
-                            <div class="friend-link-item"><h3>孟轩网的小站</h3><p>简洁纯净的小站</p><a href="https://www.mxw2024.top/" class="mysxl-link" target="_blank">去看看↗</a></div>
-                            <div class="friend-link-item"><h3>孟轩科技's blog</h3><p>无广告博客</p><a href="https://blog.mxw2024.top" class="mysxl-link" target="_blank">去看看↗</a></div>
-                            <div class="friend-link-item"><h3>虚舟实验室</h3><p>探未来之境 · 载无界新生</p><a href="https://www.caellab.com/" class="mysxl-link">去看看↗</a></div>
-                            <div class="friend-link-item"><h3>友链空位4</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
-                            <div class="friend-link-item"><h3>友链空位5</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
-                            <div class="friend-link-item"><h3>友链空位6</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
-                            <div class="friend-link-item"><h3>友链空位7</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
-                            <div class="friend-link-item"><h3>友链空位8</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
-                            <div class="friend-link-item"><h3>友链空位9</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
-                            <div class="friend-link-item"><h3>友链空位10</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link">去申请↗</a></div>
+                            <div class="friend-link-item"><h3>熵</h3><p>世界本就浑浊，罪与爱同歌</p><a href="https://www.nekt.qzz.io" class="mysxl-link external-link" target="_blank">去看看↗</a></div>
+                            <div class="friend-link-item"><h3>瞰界摄影</h3><p>翱翔视界！专业航拍</p><a href="https://b23.tv/eWbJDSf" class="mysxl-link external-link" target="_blank">去看看↗</a></div>
+                            <div class="friend-link-item"><h3>孟轩网的小站</h3><p>简洁纯净的小站</p><a href="https://www.mxw2024.top/" class="mysxl-link external-link" target="_blank">去看看↗</a></div>
+                            <div class="friend-link-item"><h3>孟轩科技's blog</h3><p>无广告博客</p><a href="https://blog.mxw2024.top" class="mysxl-link external-link" target="_blank">去看看↗</a></div>
+                            <div class="friend-link-item"><h3>虚舟实验室</h3><p>探未来之境 · 载无界新生</p><a href="https://www.caellab.com/" class="mysxl-link external-link" target="_blank">去看看↗</a></div>
+                            <div class="friend-link-item"><h3>友链空位4</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link external-link" target="_blank">去申请↗</a></div>
+                            <div class="friend-link-item"><h3>友链空位5</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link external-link" target="_blank">去申请↗</a></div>
+                            <div class="friend-link-item"><h3>友链空位6</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link external-link" target="_blank">去申请↗</a></div>
+                            <div class="friend-link-item"><h3>友链空位7</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link external-link" target="_blank">去申请↗</a></div>
+                            <div class="friend-link-item"><h3>友链空位8</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link external-link" target="_blank">去申请↗</a></div>
+                            <div class="friend-link-item"><h3>友链空位9</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link external-link" target="_blank">去申请↗</a></div>
+                            <div class="friend-link-item"><h3>友链空位10</h3><p>快去申请吧！</p><a href="https://ccwmoran.mysxl.cn" class="mysxl-link external-link" target="_blank">去申请↗</a></div>
                         </div>
                     </div>
                 </section>
 
-                <!-- 关于我们 (添加人数描述，已移除B站信息) -->
                 <section id="about" class="page">
-                    <h2 class="card-title"><i class="fas fa-circle-info"></i>关于我们</h2>
+                    <h2 class="card-title"><i class="fas fa-fingerprint"></i>关于我们</h2>
                     <div style="display: grid; gap: 24px; grid-template-columns: 1fr 1fr;">
                         <div class="card">
                             <h3>慕然科技</h3>
@@ -714,25 +725,20 @@
                         </div>
                     </div>
                 </section>
-            </div> <!-- page-container -->
+            </div>
 
-            <!-- 页脚 -->
             <footer class="footer">
-                <div class="footer-links">
-                    <a href="https://ccw.site/s/233J3" target="_blank">慕然科技的共创主页↗</a>
-                    <a href="https://ccw.site/s/bL4gnr" target="_blank">Morgan的共创主页↗</a>
-                </div>
                 <div class="footer-divider"></div>
-                <p class="copyright">©2026 CCWMORAN慕然科技.保留所有权利. <a href="https://icp.gov.moe/?keyword=20261041" target="_blank">萌ICP备20261041号</a></p>
+                <p class="copyright">©2026 CCWMORAN慕然科技.保留所有权利.</p>
+                <p style="margin-top: 8px;"><a href="https://icp.gov.moe/?keyword=20261041" target="_blank" class="external-link theme-link">萌ICP备20261041号</a></p>
                 <div class="footer-divider"></div>
                 <p class="footer-stats">该网页已被访问 <img src="https://w.saobby.com/w/cbudl97s" alt="访问统计"> 次（自2025年10月12日起）</p>
                 <div class="footer-divider"></div>
                 <p class="footer-join" id="versionLog" style="cursor:pointer; color:var(--secondary-color);">加入我们或与我们合作↗</p>
             </footer>
-        </div> <!-- main-panel -->
-    </div> <!-- layout -->
+        </div>
+    </div>
 
-    <!-- 模态框 (加入我们) -->
     <div class="modal-overlay" id="versionModal">
         <div class="modal">
             <h3 class="modal-title">加入我们或合作</h3>
@@ -741,7 +747,6 @@
         </div>
     </div>
 
-    <!-- 跳转确认弹窗 -->
     <div class="modal-overlay" id="redirectModal">
         <div class="modal">
             <h3 class="modal-title">跳转确认</h3>
@@ -876,7 +881,23 @@
                 a.addEventListener('click', (e) => { e.preventDefault(); confirmRedirect(a.href); });
             });
 
-            // 初始化首页
+            // 打字机效果
+            const typewriterElement = document.getElementById('typewriter');
+            const text = '愿你在峥嵘长青的世界里热忱不息';
+            let index = 0;
+            
+            function typeWriter() {
+                if (index < text.length) {
+                    typewriterElement.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, 150);
+                } else {
+                    typewriterElement.classList.add('finished');
+                }
+            }
+            
+            setTimeout(typeWriter, 500);
+
             showPage('home');
         })();
     </script>
